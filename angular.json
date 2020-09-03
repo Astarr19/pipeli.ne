@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "pipeline"
+    }
+  },
+  "defaultProject": "pipeline",
+  "cli": {
+    "analytics": false
+  }
 }
