@@ -5,26 +5,27 @@
     <label for="review_date">REVIEW DATE</label>
     <input type="date" id="review_date" name="review_date">
 
-    
     <label for="date_added">DATE ADDED</label>
     <input type="date" id="date_added" name="date_added">
 
-
     <label for="scout">SCOUT</label>
-    <input type="text" id="scout" name="scout">
-
+    <input list="scout">
+    <datalist id="scout">
+        <option value="Bissel"></option>
+        <option value="John"></option>
+        <option value="Mark"></option>
+        <option value="Matt"></option>
+        <option value="Ryan"></option>
+    </datalist>
 
     <label for="source">SOURCE</label>
     <input type="text" id="source" name="source">
 
-
     <label for="city">CITY</label>
     <input type="text" id="city" name="city">
 
-
     <label for="state_province">STATE/PROVINCE</label>
     <input type="text" id="state_province" name="state_province">
-
 
     <label for="country">COUNTRY</label>
     <input list="country">
@@ -47,8 +48,6 @@
         <option value="USA"></option>
     </datalist>
 
-
-
     <label for="alignment">ALIGNMENT</label>
     <input list="alignment">
     <datalist id="alignment">
@@ -63,7 +62,6 @@
         <option value="Priority"></option>
     </datalist>
 
-
     <label for="themes">THEMES</label>
     <input list="themes">
     <datalist id="themes">
@@ -71,7 +69,6 @@
         <option value="Robust Future"></option>
         <option value="The Good LIfe"></option>
     </datalist>
-
 
     <label for="technology_areas">TECHNOLOGY AREAS</label>
     <input list="technology_areas">
@@ -83,7 +80,6 @@
         <option value="Sensing"></option>
         <option value="Software/AI"></option>
     </datalist>
-
 
     <label for="landscape">LANDSCAPE</label>
     <input list="landscape">
@@ -99,18 +95,35 @@
         <option value="Wireless power"></option>
     </datalist>
 
-
     <label for="uniqueness">UNIQUENESS</label>
-    <input type="range" id="uniqueness" name="uniqueness" min="1" max="5">
-
+    <input list="uniqueness">
+    <datalist id="uniqueness">
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+        <option value="4"></option>
+        <option value="5"></option>
+    </datalist>
 
     <label for="team">TEAM</label>
-    <input type="range" id="team" name="team" min="1" max="5">
-
+    <input list="team">
+    <datalist id="team">
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+        <option value="4"></option>
+        <option value="5"></option>
+    </datalist>
 
     <label for="raised">RAISED</label>
-    <input type="number" id="raised" name="raised">
-
+    <input list="raised">
+    <datalist id="raised">
+        <option value="less than 1 million"></option>
+        <option value="1-5 million"></option>
+        <option value="5-10 million"></option>
+        <option value="10-15 million"></option>
+        <option value="more than 15 million"></option>
+    </datalist>
 
     <label for="stage">STAGE</label>
     <input list="stage">
