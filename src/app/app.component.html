@@ -1,1 +1,5 @@
 <h1>Hello test!!!</h1>
+<li *ngFor="let project of projects; index as i">
+    <h1>{{project.records.fields.companyName}}</h1>
+</li>
+<button (click)="test()"></button>

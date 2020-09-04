@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiResponseService } from './api-response.service'
+import {ProjectData} from './project-data'
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,12 @@ import { ApiResponseService } from './api-response.service'
 })
 export class AppComponent implements OnInit{
   constructor(private api: ApiResponseService) {}
+  projects: ProjectData[];
   ngOnInit() {
-    this.api.getProjects().subscribe((data)=>{
-      console.log(data);
+    this.api.getProjects().subscribe((data: ProjectData[])=>{
+      this.projects = data;
+      console.log(this.projects);
     })
   }
+  test=()=> console.log(this.projects);
 }
