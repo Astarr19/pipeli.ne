@@ -1,17 +1,126 @@
-<div>
-    NAME
-    REVIEW DATE
-    SCOUT
-    SOURCE
-    CITY
-    STATE/PROVINCE
-    COUNTRY
-    ALIGNMENT
-    THEMES
-    TECHNOLOGY AREAS
-    LANDSCAPE
-    UNIQUENESS
-    TEAM
-    RAISED
-    STAGE
-</div>
+<form>
+    <label for="name">NAME</label>
+    <input type="text" id="name" name="name">
+
+    <label for="review_date">REVIEW DATE</label>
+    <input type="date" id="review_date" name="review_date">
+
+    
+    <label for="date_added">DATE ADDED</label>
+    <input type="date" id="date_added" name="date_added">
+
+
+    <label for="scout">SCOUT</label>
+    <input type="text" id="scout" name="scout">
+
+
+    <label for="source">SOURCE</label>
+    <input type="text" id="source" name="source">
+
+
+    <label for="city">CITY</label>
+    <input type="text" id="city" name="city">
+
+
+    <label for="state_province">STATE/PROVINCE</label>
+    <input type="text" id="state_province" name="state_province">
+
+
+    <label for="country">COUNTRY</label>
+    <input list="country">
+    <datalist id="country">
+        <option value="Australia"></option>
+        <option value="Canada"></option>
+        <option value="China"></option>
+        <option value="Denmark"></option>
+        <option value="Finland"></option>
+        <option value="France"></option>
+        <option value="Germany"></option>
+        <option value="Isreal"></option>
+        <option value="Japan"></option>
+        <option value="Mexico"></option>
+        <option value="Portugal"></option>
+        <option value="Russia"></option>
+        <option value="Singapore"></option>
+        <option value="Spain"></option>
+        <option value="United Kingdom"></option>
+        <option value="USA"></option>
+    </datalist>
+
+
+
+    <label for="alignment">ALIGNMENT</label>
+    <input list="alignment">
+    <datalist id="alignment">
+        <option value="Amway"></option>
+        <option value="Bissel"></option>
+        <option value="Faurecia"></option>
+        <option value="Steelcase"></option>
+        <option value="Whirlpool"></option>
+        <option value="Wakestream"></option>
+        <option value="Trinity"></option>
+        <option value="Emergent"></option>
+        <option value="Priority"></option>
+    </datalist>
+
+
+    <label for="themes">THEMES</label>
+    <input list="themes">
+    <datalist id="themes">
+        <option value="Health Beyond the Hospital"></option>
+        <option value="Robust Future"></option>
+        <option value="The Good LIfe"></option>
+    </datalist>
+
+
+    <label for="technology_areas">TECHNOLOGY AREAS</label>
+    <input list="technology_areas">
+    <datalist id="technology_areas">
+        <option value="Advanced Materials"></option>
+        <option value="Business Process"></option>
+        <option value="Products"></option>
+        <option value="Robotics"></option>
+        <option value="Sensing"></option>
+        <option value="Software/AI"></option>
+    </datalist>
+
+
+    <label for="landscape">LANDSCAPE</label>
+    <input list="landscape">
+    <datalist id="landscape">
+        <option value="Aging in place"></option>
+        <option value="Air quality"></option>
+        <option value="Automation and robotics"></option>
+        <option value="Clinic in a box"></option>
+        <option value="Good habits"></option>
+        <option value="Personalized wellness"></option>
+        <option value="Responsive spaces"></option>
+        <option value="Safe shared spaces"></option>
+        <option value="Wireless power"></option>
+    </datalist>
+
+
+    <label for="uniqueness">UNIQUENESS</label>
+    <input type="range" id="uniqueness" name="uniqueness" min="1" max="5">
+
+
+    <label for="team">TEAM</label>
+    <input type="range" id="team" name="team" min="1" max="5">
+
+
+    <label for="raised">RAISED</label>
+    <input type="number" id="raised" name="raised">
+
+
+    <label for="stage">STAGE</label>
+    <input list="stage">
+    <datalist id="stage">
+        <option value="Pre-Seed"></option>
+        <option value="Seed"></option>
+        <option value="Series A"></option>
+        <option value="Series B+"></option>
+    </datalist>
+
+    <input type="submit">
+    <input type="reset">
+</form>
