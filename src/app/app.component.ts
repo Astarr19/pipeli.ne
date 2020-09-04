@@ -9,6 +9,8 @@ import { ApiResponseService } from './api-response.service'
 export class AppComponent implements OnInit{
   constructor(private api: ApiResponseService) {}
   ngOnInit() {
-    console.log(this.api.getProjects())
+    this.api.getProjects().subscribe((data)=>{
+      console.log(data);
+    })
   }
 }

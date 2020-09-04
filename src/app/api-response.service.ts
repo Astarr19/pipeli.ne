@@ -6,11 +6,11 @@ import { apiKey } from '../apikey'
   providedIn: 'root'
 })
 export class ApiResponseService {
-// Use javascript documentation instead of Curl
   constructor(private http: HttpClient) { }
-  apiUrl: string = 'https://api.airtable.com/v0/appyPW0SwJXXoyIMP/Master%20List/recG1qPXqhrj154xh?api';
-  authorization: string = `-H "Authorization: Bearer ${apiKey}"`
+  apiUrl: string = 'https://api.airtable.com/v0/appyPW0SwJXXoyIMP/Master%20List';
+  authorization: string = `?api_key=${apiKey}`
   getProjects() {
+    console.log(this.apiUrl + this.authorization);
     return this.http.get(this.apiUrl + this.authorization);
   }
 }
