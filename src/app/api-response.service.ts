@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { apiKey } from '../apikey'
+import { apikey } from '../apikey'
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ import { apiKey } from '../apikey'
 export class ApiResponseService {
   constructor(private http: HttpClient) { }
   apiUrl: string = 'https://api.airtable.com/v0/appyPW0SwJXXoyIMP/Master%20List';
-  authorization: string = `?api_key=${apiKey}`
+  authorization: string = `?api_key=${apikey}`
   getProjects() {
     console.log(this.apiUrl + this.authorization);
     return this.http.get(this.apiUrl + this.authorization);
