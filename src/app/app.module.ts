@@ -7,13 +7,14 @@ import { ProjectModuleComponent } from './project-module/project-module.componen
 import { FilterComponent } from './filter/filter.component';
 import { EditComponent } from './edit/edit.component';
 import { FormsModule } from '@angular/forms';
-import { ApiResponseService } from './api-response.service'
+import { ApiResponseService } from './api-response.service';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     FilterPipe,
-    FilterComponent
+    FilterComponent,
     ProjectModuleComponent,
     EditComponent
   ],
