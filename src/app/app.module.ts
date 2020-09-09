@@ -1,25 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FilterPipe } from './filter.pipe';
-import { FilterComponent } from './filter/filter.component'
+import { ProjectModuleComponent } from './project-module/project-module.component';
+import { FilterComponent } from './filter/filter.component';
+import { EditComponent } from './edit/edit.component';
+import { FormsModule } from '@angular/forms';
+import { ApiResponseService } from './api-response.service'
 
 @NgModule({
   declarations: [
     AppComponent,
     FilterPipe,
     FilterComponent
+    ProjectModuleComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
-  exports: [
-  ],
-  providers: [],
+  providers: [ApiResponseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
