@@ -6,6 +6,7 @@ import { ApiResponseService } from './api-response.service'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements OnInit{
   constructor(private api: ApiResponseService) {}
   ngOnInit() {
