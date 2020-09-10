@@ -10,7 +10,9 @@ import { ProjectData, ProjectChild, Project } from '../project-data';
 })
 export class ProjectModuleComponent implements OnInit {
 
-  constructor(private api:ApiResponseService) { }
+  //projects: ProjectData;
+ 
+  constructor(private api: ApiResponseService) { }
   
 projects: Project[];
 
