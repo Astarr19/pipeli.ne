@@ -1,17 +1,17 @@
 form
 {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: flex-start;
 
-    height: 300px;
+    max-width: 999px;
 }
 
 div
 {
     display: flex;
     flex-flow: column nowrap;
-    margin: 10px;
-
     height: 40px;
     width: 200px;
 }
