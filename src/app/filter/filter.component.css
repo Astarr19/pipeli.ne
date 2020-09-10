@@ -1,0 +1,27 @@
+form
+{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+
+    max-width: 999px;
+}
+
+div
+{
+    display: flex;
+    flex-flow: column nowrap;
+    height: 40px;
+    width: 200px;
+}
+
+label
+{
+    width: 165px;
+}
+
+input
+{
+    width: 170px;
+}
