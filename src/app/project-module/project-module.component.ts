@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiResponseService } from '../api-response.service';
-import { ProjectData } from '../project-data';
+import { ProjectData, ProjectChild, Project } from '../project-data';
+
 
 @Component({
   selector: 'app-project-module',
@@ -11,11 +12,13 @@ export class ProjectModuleComponent implements OnInit {
 
   constructor(private api:ApiResponseService) { }
   
-projects:ProjectData
+projects: Project[];
 
   ngOnInit(): void {
-    this.api.getProjects().subscribe((response: ProjectData[]) => {
-      this.projects = response.fields
+    this.api.getProjects().subscribe((response: ProjectData) => {
+      console.log(response)
+      this.projects = response.records
+      //only error on Michael's end
     })
   }
 }

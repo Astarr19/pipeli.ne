@@ -1,9 +1,9 @@
-<p>project-module works!</p>
+<!-- <p>project-module works!</p>
 <h2>Project "Big Chungus"</h2>
 <p>Criteria Indicators Go Here</p>
 <h3>Overview/Quick Synopsis</h3>
 <ul>
-    <li>Startup Name (Startup City) (flag?)</li>
+    <li></li>
     <li>Project Summary</li>
     <li>Amount Raised $$$</li>
     <li>Engagement Phase</li>
@@ -11,7 +11,11 @@
     <li>Amount raised</li>
     <li>Project Lead (person's name)</li>
     <li>Last Update's Date</li>
-</ul>
+</ul> -->
+
+<li *ngFor="let project of projects; index as i">
+  <h1>{{project.fields["Company Name"]}}</h1>  
+</li>
 
 <!-- <div>
     <ul class="items">
