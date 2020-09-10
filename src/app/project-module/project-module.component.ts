@@ -20,7 +20,6 @@ projects: Project[];
     this.api.getProjects().subscribe((response: ProjectData) => {
       console.log(response)
       this.projects = response.records
-      //only error on Michael's end
     })
   }
 }
