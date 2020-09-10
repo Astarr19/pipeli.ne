@@ -1,5 +1,27 @@
 form
 {
     display: flex;
+    flex-flow: column wrap;
+
+    height: 300px;
+}
+
+div
+{
+    display: flex;
     flex-flow: column nowrap;
+    margin: 10px;
+
+    height: 40px;
+    width: 200px;
+}
+
+label
+{
+    width: 165px;
+}
+
+input
+{
+    width: 170px;
 }
