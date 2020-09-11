@@ -10,4 +10,18 @@ export class ApiResponseService {
   getProjects() {
     return this.http.get(this.apiUrl);
   }
+
+  filtered(searchCriteria?: filterInterface)
+  {
+    let url: string = this.apiUrl + '?fields%5B%5D=';
+    if(!searchCriteria) {
+        url = url + 'Company%20Name';
+    };
+
+
+  }
+}
+
+export interface filterInterface {
+    name: string;
 }
