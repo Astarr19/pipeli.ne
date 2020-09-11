@@ -1,3 +1,5 @@
 <li *ngFor="let project of projects; index as i">
-    <h1>{{project.fields["Company Name"]}}</h1>  
+    <app-edit [selected]="selected" [formStatus]="formStatus"></app-edit>
+    <h1 *ngIf="formStatus">{{project.fields["Company Name"]}}</h1> 
+    <button (click)="getId([i])"></button>
 </li>
