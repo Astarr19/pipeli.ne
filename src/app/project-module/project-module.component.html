@@ -12,3 +12,6 @@
     <li>Project Lead (person's name)</li>
     <li>Last Update's Date</li>
 </ul>
+<li *ngFor="let project of projects; index as i">
+    <h1>{{project.fields["Company Name"]}}</h1>  
+</li>
