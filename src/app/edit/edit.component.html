@@ -1,1 +1,15 @@
-<p>edit works!</p>
+<form #f="ngForm" *ngIf="!formStatus" (submit)="submitEdit(this.selected, f)">
+    <input type="text" name="companyName" ngModel>
+    <input type="text" name="city" ngModel>
+    <input type="text" name="country" ngModel>
+    <input type="text" name="summary" ngModel>
+    <input type="text" name="review" ngModel>
+    <input type="text" name="scout" ngModel>
+    <input type="text" name="website" ngModel>
+    <input type="text" name="alignment" ngModel>
+    <input type="text" name="themes" ngModel>
+    <input type="text" name="uniqueness" ngModel>
+    <input type="text" name="team" ngModel>
+    <input type="text" name="raised" ngModel>
+    <button type="submit">Submit Changes</button>
+</form>
