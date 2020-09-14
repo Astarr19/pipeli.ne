@@ -10,12 +10,6 @@ import { ProjectData } from './project-data';
 
 export class AppComponent implements OnInit{
   constructor(private api: ApiResponseService) {}
-  title = 'pipeli.ne';
-  projects: ProjectData[];
-  ngOnInit() {
-    this.api.getProjects().subscribe((data: ProjectData[])=>{
-      this.projects = data;
-    })
-  }
+  ngOnInit() { }
 }
   
