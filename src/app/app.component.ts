@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiResponseService } from './api-response.service'
+import { ApiResponseService } from './api-response.service';
+import { ProjectData } from './project-data';
 
 @Component({
   selector: 'app-root',
@@ -11,3 +12,4 @@ export class AppComponent implements OnInit{
   constructor(private api: ApiResponseService) {}
   ngOnInit() { }
 }
+  
