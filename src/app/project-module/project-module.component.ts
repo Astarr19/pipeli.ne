@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiResponseService } from '../api-response.service';
-import { ProjectData, ProjectChild, Project } from '../project-data';
+import { ProjectData, Project } from '../project-data';
 
 
 @Component({
