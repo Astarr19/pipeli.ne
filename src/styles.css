@@ -3,3 +3,18 @@ li
   margin: 0;
   padding: 0;
 } 
+
+a {
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+}
+
+a:visited
+{
+  color: black;
+}
+
+.logo {
+  font-size: xx-large;
+
+}
