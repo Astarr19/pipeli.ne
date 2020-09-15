@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- <p>project-module works!</p>
 <h2>Project "Big Chungus"</h2>
 <p>Criteria Indicators Go Here</p>
@@ -71,3 +72,10 @@
         </li>
       </ul>
     </div> -->
+=======
+<li *ngFor="let project of projects; index as i">
+    <app-edit [selected]="selected" [formStatus]="formStatus"></app-edit>
+    <h1 *ngIf="formStatus">{{project.fields["Company Name"]}}</h1> 
+    <button (click)="getId([i])"></button>
+</li>
+>>>>>>> Aidan

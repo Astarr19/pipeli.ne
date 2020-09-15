@@ -6,4 +6,3 @@ export interface Project {
 export interface ProjectData {
     records: Project[]
 }
-
