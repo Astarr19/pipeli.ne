@@ -18,7 +18,7 @@ export class ProjectModuleComponent implements OnInit {
 
   ngOnInit(): void {
     //Populates the page with all startups
-    this.api.getProjects().subscribe((response: ProjectData) => {
+    this.api.getStartups().subscribe((response: ProjectData) => {
       console.log(response)
       this.projects = response.records
     })
@@ -26,7 +26,7 @@ export class ProjectModuleComponent implements OnInit {
 
   getId(index: number) {
     //Grabs the id of startup
-    this.api.getProjects().subscribe((response: ProjectData) => {
+    this.api.getStartups().subscribe((response: ProjectData) => {
       this.selected = response.records[index].id;
       console.log(this.selected)
       return this.selected;

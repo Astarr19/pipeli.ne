@@ -12,7 +12,7 @@ export class ApiResponseService {
   pageSize: string = '?pageSize=5'
   //get all function for getting list of all startups in project-module component
   //change getProjects to getStartups?
-  getProjects(offset?: string) {
+  getStartups(offset?: string) {
     if (offset){
       return this.http.get(this.apiUrl + this.masterList + this.pageSize + offset);
 
