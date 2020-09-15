@@ -21,6 +21,15 @@ export class ApiResponseService {
     }
   }
 
+  //method to pull all projects with the same Startup name from the Projects tab
+  getProjects(offset?: string) {
+    if (offset){
+      return this.http.get(this.apiUrl + this.projectList + offset);
+    } else {
+      return this.http.get(this.apiUrl + this.projectList);
+    }
+  } 
+
   updateProject(id, item) {
     return this.http.put(`${this.apiUrl}/${id}`, {fields: item}, {responseType: "json"})
   }
