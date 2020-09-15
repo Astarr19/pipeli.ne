@@ -1,20 +1,61 @@
-<p>project-module works!</p>
-<h2>Project "Big Chungus"</h2>
-<p>Criteria Indicators Go Here</p>
-<h3>Overview/Quick Synopsis</h3>
-<ul>
-    <li>Startup Name (Startup City) (flag?)</li>
-    <li>Project Summary</li>
-    <li>Amount Raised $$$</li>
-    <li>Engagement Phase</li>
-    <li>Engagement Type (Engagement Progress color coded?)</li>
-    <li>Amount raised</li>
-    <li>Project Lead (person's name)</li>
-    <li>Last Update's Date</li>
-</ul>
+<app-filter></app-filter>
 
-<li *ngFor="let project of projects; index as i">
-    <app-edit [selected]="selected" [formStatus]="formStatus"></app-edit>
-    <h1 *ngIf="formStatus">{{project.fields["Company Name"]}}</h1> 
-    <button (click)="getId([i])"></button>
+<div class="container">
+<li class="project" *ngFor="let project of projects; index as i">
+  <h1>{{project.fields["Company Name"]}}</h1>
+  <div class="row">
+    <div class="column">
+      
+      <p>{{project.fields["City"]}}, {{project.fields["Country"]}}</p>
+      <p>{{project.fields["Two Line Company Summary"]}}</p>
+    <div class="review-date field">   
+      <p>Review Date:</p>&nbsp;
+      <p>{{project.fields["Review Date"]}}</p>
+    </div>
+    <div class="scout field">
+      <p>Scout:</p>&nbsp;
+      <p>{{project.fields["Scout"]}}</p>
+    </div> 
+  <!-- <a href="{{project.fields["Company Website"]}}"></a>
+  Fix to display Company Website as URL -->
+    
+  <div class="alignment field">
+    <p>Alignment:</p>&nbsp;
+    <p>{{project.fields["Alignment"]}}</p>
+  </div>
+  <div class="themes field">
+    <p>Themes:</p>&nbsp;
+    <p>{{project.fields["Theme(s)"]}}</p>
+  </div>
+  <a href="#">More Details
+    <app-project-detail></app-project-detail></a>
+  </div>
+  <div class="column">
+  <div class="uniqueness field"> 
+    <p>Uniqueness:</p>&nbsp;
+    <p>{{project.fields["Uniqueness"]}}</p> 
+  </div>
+  <div class="team field">
+    <p>Team:</p>&nbsp;
+    <p>{{project.fields["Team"]}}</p>
+  </div>
+  <div class="raised field"> 
+    <p>Capital Raised:</p>&nbsp;
+    <p>${{project.fields["Raised"]}}</p>
+  </div>
+  </div>
+  </div>  
 </li>
+</div>
+
+
+<!-- <div>
+    <ul class="items">
+        <li *ngFor="let item of items; let i = index;">
+            <span class="badge"></span> {{item.product}} {{item.price | currency}} {{item.quantity}}
+          <button class="delete" title="delete product"
+            (click)="deleteItem(item.id)">X</button>
+            <button class='edit' title='edit item' (click)="editItem()">Edit</button>
+        </li>
+      </ul>
+    </div> -->
