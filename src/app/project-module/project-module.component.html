@@ -1,51 +1,54 @@
 <app-filter (filtered)="filter($event)"></app-filter>
 
+<button (click)="nextPage()">Next Page</button>
+<button (click)="lastPage()">Last Page</button>
+
 <div class="container">
-<li class="project" *ngFor="let project of projects; index as i">
-  <h1>{{project.fields["Company Name"]}}</h1>
-  <div class="row">
-    <div class="column">
+  <li class="project" *ngFor="let project of projects; index as i">
+    <h1>{{project.fields["Company Name"]}}</h1>
+    <div class="row">
+      <div class="column">
+        
+        <p>{{project.fields["City"]}}, {{project.fields["Country"]}}</p>
+        <p>{{project.fields["Two Line Company Summary"]}}</p>
+      <div class="review-date field">   
+        <p>Review Date:</p>&nbsp;
+        <p>{{project.fields["Review Date"]}}</p>
+      </div>
+      <div class="scout field">
+        <p>Scout:</p>&nbsp;
+        <p>{{project.fields["Scout"]}}</p>
+      </div> 
+    <!-- <a href="{{project.fields["Company Website"]}}"></a>
+    Fix to display Company Website as URL -->
       
-      <p>{{project.fields["City"]}}, {{project.fields["Country"]}}</p>
-      <p>{{project.fields["Two Line Company Summary"]}}</p>
-    <div class="review-date field">   
-      <p>Review Date:</p>&nbsp;
-      <p>{{project.fields["Review Date"]}}</p>
+    <div class="alignment field">
+      <p>Alignment:</p>&nbsp;
+      <p>{{project.fields["Alignment"]}}</p>
     </div>
-    <div class="scout field">
-      <p>Scout:</p>&nbsp;
-      <p>{{project.fields["Scout"]}}</p>
-    </div> 
-  <!-- <a href="{{project.fields["Company Website"]}}"></a>
-  Fix to display Company Website as URL -->
-    
-  <div class="alignment field">
-    <p>Alignment:</p>&nbsp;
-    <p>{{project.fields["Alignment"]}}</p>
-  </div>
-  <div class="themes field">
-    <p>Themes:</p>&nbsp;
-    <p>{{project.fields["Theme(s)"]}}</p>
-  </div>
-  <a href="#">More Details
-    <app-project-detail></app-project-detail></a>
-  </div>
-  <div class="column">
-  <div class="uniqueness field"> 
-    <p>Uniqueness:</p>&nbsp;
-    <p>{{project.fields["Uniqueness"]}}</p> 
-  </div>
-  <div class="team field">
-    <p>Team:</p>&nbsp;
-    <p>{{project.fields["Team"]}}</p>
-  </div>
-  <div class="raised field"> 
-    <p>Capital Raised:</p>&nbsp;
-    <p>${{project.fields["Raised"]}}</p>
-  </div>
-  </div>
-  </div>  
-</li>
+    <div class="themes field">
+      <p>Themes:</p>&nbsp;
+      <p>{{project.fields["Theme(s)"]}}</p>
+    </div>
+    <a href="#">More Details
+      <app-project-detail></app-project-detail></a>
+    </div>
+    <div class="column">
+      <div class="uniqueness field"> 
+        <p>Uniqueness:</p>&nbsp;
+        <p>{{project.fields["Uniqueness"]}}</p> 
+      </div>
+      <div class="team field">
+        <p>Team:</p>&nbsp;
+        <p>{{project.fields["Team"]}}</p>
+      </div>
+      <div class="raised field"> 
+        <p>Capital Raised:</p>&nbsp;
+        <p>${{project.fields["Raised"]}}</p>
+      </div>
+    </div>
+    </div>  
+  </li>
 </div>
 
 

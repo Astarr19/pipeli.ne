@@ -15,28 +15,60 @@ export class ProjectModuleComponent implements OnInit {
   projects: Project[];
   selected: string;
   formStatus: boolean = true;
+  offset: string;
+  index: number = 0;
+  offsetArr: string[] = [''];
 
   ngOnInit(): void {
     //Populates the page with all startups
     this.api.getProjects('').subscribe((response: ProjectData) => {
-      console.log(response)
+      if ((this.index + 1) > this.offsetArr.length) {
+        this.offsetArr.push(response.offset);
+      }
       this.projects = response.records
     })
   }
 
-  getId(index: number) {
-    //Grabs the id of startup
-    this.api.getProjects('').subscribe((response: ProjectData) => {
-      this.selected = response.records[index].id;
-      console.log(this.selected)
-      return this.selected;
+  nextPage() {
+    this.index++;
+    this.api.getProjects(this.offsetArr[this.index]).subscribe((response:ProjectData) => {
+      if ((this.index + 1) > this.offsetArr.length) {
+        this.offsetArr.push(response.offset);
+      }
+      this.projects = response.records;
+    })
+    console.log(this.offsetArr, this.index)
+  }
+
+  lastPage() {
+    this.index--;
+    this.api.getProjects(this.offsetArr[this.index]).subscribe((response:ProjectData) => {
+      this.offset = response.offset;
+      this.projects = response.records;
     })
   }
 
   filter(obj: object) {
-    let str: string = `${obj["city"]}+${obj["country"]}+${obj["alignment"]}+${obj["themes"]}+${obj["landscape"]}`;
+    let str = '';
+    if (obj["city"]) {
+      str += encodeURI(`{city}='${obj["city"]}'`);
+    }
+    if (obj["country"]) {
+      if (str !== '') {
+        str += '&';
+      }
+      str += encodeURI(`{country}='${obj["country"]}'`);
+    }
+    if (obj["themes"]) {
+      if (str !== '') {
+        str += '&';
+      }
+      str += encodeURI(`{themes}='${obj["themes"]}'`);
+    }
+    console.log(obj);
     this.api.getProjects('', str).subscribe((response: ProjectData) => {
-      console.log(response.records)
+      this.offset = response.offset;
+      this.projects = response.records;
     })
   }
 
