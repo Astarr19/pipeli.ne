@@ -6,14 +6,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiResponseService {
   constructor(private http: HttpClient) { }
-  apiUrl: string = 'https://scgcairtable.herokuapp.com/master-list';
+  apiUrl: string = 'https://scgcairtable.herokuapp.com/';
+  masterList: string = 'master-list'
+  projectList: string = 'projects'
   pageSize: string = '?pageSize=5'
+  //get all function for getting list of all startups in project-module component
+  //change getProjects to getStartups?
   getProjects(offset?: string) {
     if (offset){
-      return this.http.get(this.apiUrl + this.pageSize + offset);
+      return this.http.get(this.apiUrl + this.masterList + this.pageSize + offset);
 
     } else {
-      return this.http.get(this.apiUrl + this.pageSize);
+      return this.http.get(this.apiUrl + this.masterList + this.pageSize);
     }
   }
 
