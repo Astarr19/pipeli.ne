@@ -1,19 +1,4 @@
-<<<<<<< HEAD
-<!-- <p>project-module works!</p>
-<h2>Project "Big Chungus"</h2>
-<p>Criteria Indicators Go Here</p>
-<h3>Overview/Quick Synopsis</h3>
-<ul>
-    <li> {{ projects.scout }} </li>
-    <li>Startup Name (Startup City) (flag?)</li>
-    <li>Project Summary</li>
-    <li>Amount Raised $$$</li>
-    <li>Engagement Phase</li>
-    <li>Engagement Type (Engagement Progress color coded?)</li>
-    <li>Amount raised</li>
-    <li>Project Lead (person's name)</li>
-    <li>Last Update's Date</li>
-</ul> -->
+<app-filter></app-filter>
 
 <div class="container">
 <li class="project" *ngFor="let project of projects; index as i">
@@ -21,7 +6,7 @@
   <div class="row">
     <div class="column">
       
-      <p>{{project.fields.City}}, {{project.fields.Country}}</p>
+      <p>{{project.fields["City"]}}, {{project.fields["Country"]}}</p>
       <p>{{project.fields["Two Line Company Summary"]}}</p>
     <div class="review-date field">   
       <p>Review Date:</p>&nbsp;
@@ -29,14 +14,14 @@
     </div>
     <div class="scout field">
       <p>Scout:</p>&nbsp;
-      <p>{{project.fields.Scout}}</p>
+      <p>{{project.fields["Scout"]}}</p>
     </div> 
-  <!-- <a href="{{project.fields["Company Website"]}}"></a> -->
-  <!-- Fix to display Company Website as URL -->
+  <!-- <a href="{{project.fields["Company Website"]}}"></a>
+  Fix to display Company Website as URL -->
     
   <div class="alignment field">
     <p>Alignment:</p>&nbsp;
-    <p>{{project.fields.Alignment}}</p>
+    <p>{{project.fields["Alignment"]}}</p>
   </div>
   <div class="themes field">
     <p>Themes:</p>&nbsp;
@@ -46,15 +31,15 @@
   <div class="column">
   <div class="uniqueness field"> 
     <p>Uniqueness:</p>&nbsp;
-    <p>{{project.fields.Uniqueness}}</p> 
+    <p>{{project.fields["Uniqueness"]}}</p> 
   </div>
   <div class="team field">
     <p>Team:</p>&nbsp;
-    <p>{{project.fields.Team}}</p>
+    <p>{{project.fields["Team"]}}</p>
   </div>
   <div class="raised field"> 
     <p>Capital Raised:</p>&nbsp;
-    <p>${{project.fields.Raised}}</p>
+    <p>${{project.fields["Raised"]}}</p>
   </div>
   </div>
   </div>  
@@ -72,10 +57,3 @@
         </li>
       </ul>
     </div> -->
-=======
-<li *ngFor="let project of projects; index as i">
-    <app-edit [selected]="selected" [formStatus]="formStatus"></app-edit>
-    <h1 *ngIf="formStatus">{{project.fields["Company Name"]}}</h1> 
-    <button (click)="getId([i])"></button>
-</li>
->>>>>>> Aidan
