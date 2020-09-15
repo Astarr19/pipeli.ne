@@ -18,7 +18,7 @@ export class ProjectModuleComponent implements OnInit {
 
   ngOnInit(): void {
     //Populates the page with all startups
-    this.api.getProjects().subscribe((response: ProjectData) => {
+    this.api.getProjects('').subscribe((response: ProjectData) => {
       console.log(response)
       this.projects = response.records
     })
@@ -26,10 +26,17 @@ export class ProjectModuleComponent implements OnInit {
 
   getId(index: number) {
     //Grabs the id of startup
-    this.api.getProjects().subscribe((response: ProjectData) => {
+    this.api.getProjects('').subscribe((response: ProjectData) => {
       this.selected = response.records[index].id;
       console.log(this.selected)
       return this.selected;
+    })
+  }
+
+  filter(obj: object) {
+    let str: string = `${obj["city"]}+${obj["country"]}+${obj["alignment"]}+${obj["themes"]}+${obj["landscape"]}`;
+    this.api.getProjects('', str).subscribe((response: ProjectData) => {
+      console.log(response.records)
     })
   }
 
