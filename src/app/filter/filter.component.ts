@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ApiResponseService } from '../api-response.service';
 
 @Component({
   selector: 'app-filter',
@@ -7,7 +8,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class FilterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private api: ApiResponseService) { }
 
   ngOnInit(): void {
   }
