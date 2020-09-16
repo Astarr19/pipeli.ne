@@ -12,11 +12,14 @@ export class ProjectModuleComponent implements OnInit {
 
   constructor(private api:ApiResponseService) { }
   
-  projects: Project[];
+  
   startups: Startup[];
+  projects: Project[];
   startupFilter: {["Startup Engaged"]};
   selected: string;
   formStatus: boolean = true;
+
+  @Input() project: Project;
 
   ngOnInit(): void {
     //Populates the page with all startups
