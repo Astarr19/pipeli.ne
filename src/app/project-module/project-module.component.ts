@@ -15,24 +15,73 @@ export class ProjectModuleComponent implements OnInit {
   projects: Project[];
   selected: string;
   formStatus: boolean = true;
+  nextButton: boolean = true;
+  lastButton: boolean = false;
+  index: number = 0;
+  offsetArr: string[] = [''];
+  filters: string;
 
   ngOnInit(): void {
     //Populates the page with all startups
-    this.api.getProjects().subscribe((response: ProjectData) => {
-      console.log(response)
-      this.projects = response.records
+    this.api.getProjects(this.offsetArr[0]).subscribe((response: ProjectData) => {
+      this.offsetArr.push(response.offset);
+      this.projects = response.records;
     })
   }
 
-  getId(index: number) {
-    //Grabs the id of startup
-    this.api.getProjects().subscribe((response: ProjectData) => {
-      this.selected = response.records[index].id;
-      console.log(this.selected)
-      return this.selected;
+  nextPage() {
+    this.index++;
+    this.api.getProjects(this.offsetArr[this.index], this.filters).subscribe((response:ProjectData) => {
+      if ((this.index + 1) >= this.offsetArr.length) {
+        if (response.offset !== undefined) {
+          this.offsetArr.push(response.offset);
+        } else {
+          this.offsetArr.push(null);
+        }
+      }
+      if (this.offsetArr[this.index + 1] === null) {
+        this.nextButton = false;
+      }
+      this.lastButton = true;
+      this.projects = response.records;
     })
   }
 
-  
+  lastPage() {
+    if (this.index - 1 === 0) {
+      this.lastButton = false;
+    }
+    this.index--;
+    this.nextButton = true;
+    this.api.getProjects(this.offsetArr[this.index], this.filters).subscribe((response:ProjectData) => {
+      this.projects = response.records;
+    })
+  }
+
+  filter(obj: object) {
+    let str = '';
+    if (obj["city"]) {
+      str += encodeURI(`{city}='${obj["city"]}'`);
+    }
+    if (obj["country"]) {
+      if (str !== '') {
+        str += '&';
+      }
+      str += encodeURI(`{country}='${obj["country"]}'`);
+    }
+    if (obj["themes"]) {
+      if (str !== '') {
+        str += '&';
+      }
+      str += encodeURI(`{themes}='${obj["themes"]}'`);
+    }
+    this.filters = str;
+    this.offsetArr = [''];
+    this.index = 0;
+    this.api.getProjects(this.offsetArr[this.index], str).subscribe((response: ProjectData) => {
+      this.offsetArr.push(response.offset);
+      this.projects = response.records;
+    })
+  }
 }
 ;
