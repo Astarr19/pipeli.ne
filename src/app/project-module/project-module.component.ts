@@ -28,7 +28,6 @@ export class ProjectModuleComponent implements OnInit {
 
   ngOnInit(): void {
     //Populates the page with all startups
-<<<<<<< HEAD
     this.api.getProjects(this.offsetArr[0]).subscribe((response: ProjectData) => {
       this.offsetArr.push(response.offset);
       this.projects = response.records;
@@ -50,15 +49,15 @@ export class ProjectModuleComponent implements OnInit {
       }
       this.lastButton = true;
       this.projects = response.records;
-=======
-    this.api.getStartups().subscribe((response: StartupData) => {
-      console.log(response)
-      this.startups = response.records
+    // this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
+    //   console.log(response)
+    //   this.startups = response.records
     })
   }
 
+
   getProjects(): void {
-    this.api.getProjects().subscribe((response: ProjectData) => {
+    this.api.getProjects(this.offsetArr[this.index]).subscribe((response: ProjectData) => {
       console.log(response)
       this.projects = response.records
     })
@@ -66,17 +65,16 @@ export class ProjectModuleComponent implements OnInit {
 
   //filter method for filtering project list by startup name
   //https://stackoverflow.com/questions/50591939/angular-how-to-filter-ngfor-to-specific-object-property-data
-   filterProjects(): void {
-     //this.filteredValues = values.filter(project => project.category === 'Startup Engaged');
-  }
+  //  filterProjects(): void {
+  //    this.filteredValues = values.filter(project => project.category === 'Startup Engaged');
+  // }
 
   getId(index: number) {
     //Grabs the id of startup
-    this.api.getStartups().subscribe((response: ProjectData) => {
+    this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
       this.selected = response.records[index].id;
       console.log(this.selected)
       return this.selected;
->>>>>>> doug
     })
   }
 
@@ -116,5 +114,4 @@ export class ProjectModuleComponent implements OnInit {
       this.projects = response.records;
     })
   }
-}
-;
+};
