@@ -1,7 +1,7 @@
 <app-filter (filtered)="filter($event)"></app-filter>
 
-<button (click)="nextPage()">Next Page</button>
-<button (click)="lastPage()">Last Page</button>
+<button *ngIf="nextButton" (click)="nextPage()">Next Page</button>
+<button *ngIf="lastButton" (click)="lastPage()">Last Page</button>
 
 <div class="container">
   <li class="project" *ngFor="let project of projects; index as i">

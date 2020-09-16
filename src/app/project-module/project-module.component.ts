@@ -15,35 +15,45 @@ export class ProjectModuleComponent implements OnInit {
   projects: Project[];
   selected: string;
   formStatus: boolean = true;
-  offset: string;
+  nextButton: boolean = true;
+  lastButton: boolean = false;
   index: number = 0;
   offsetArr: string[] = [''];
+  filters: string;
 
   ngOnInit(): void {
     //Populates the page with all startups
-    this.api.getProjects('').subscribe((response: ProjectData) => {
-      if ((this.index + 1) > this.offsetArr.length) {
-        this.offsetArr.push(response.offset);
-      }
-      this.projects = response.records
+    this.api.getProjects(this.offsetArr[0]).subscribe((response: ProjectData) => {
+      this.offsetArr.push(response.offset);
+      this.projects = response.records;
     })
   }
 
   nextPage() {
     this.index++;
-    this.api.getProjects(this.offsetArr[this.index]).subscribe((response:ProjectData) => {
-      if ((this.index + 1) > this.offsetArr.length) {
-        this.offsetArr.push(response.offset);
+    this.api.getProjects(this.offsetArr[this.index], this.filters).subscribe((response:ProjectData) => {
+      if ((this.index + 1) >= this.offsetArr.length) {
+        if (response.offset !== undefined) {
+          this.offsetArr.push(response.offset);
+        } else {
+          this.offsetArr.push(null);
+        }
       }
+      if (this.offsetArr[this.index + 1] === null) {
+        this.nextButton = false;
+      }
+      this.lastButton = true;
       this.projects = response.records;
     })
-    console.log(this.offsetArr, this.index)
   }
 
   lastPage() {
+    if (this.index - 1 === 0) {
+      this.lastButton = false;
+    }
     this.index--;
-    this.api.getProjects(this.offsetArr[this.index]).subscribe((response:ProjectData) => {
-      this.offset = response.offset;
+    this.nextButton = true;
+    this.api.getProjects(this.offsetArr[this.index], this.filters).subscribe((response:ProjectData) => {
       this.projects = response.records;
     })
   }
@@ -65,9 +75,11 @@ export class ProjectModuleComponent implements OnInit {
       }
       str += encodeURI(`{themes}='${obj["themes"]}'`);
     }
-    console.log(obj);
-    this.api.getProjects('', str).subscribe((response: ProjectData) => {
-      this.offset = response.offset;
+    this.filters = str;
+    this.offsetArr = [''];
+    this.index = 0;
+    this.api.getProjects(this.offsetArr[this.index], str).subscribe((response: ProjectData) => {
+      this.offsetArr.push(response.offset);
       this.projects = response.records;
     })
   }

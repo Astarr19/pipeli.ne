@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class ApiResponseService {
   constructor(private http: HttpClient) { }
   apiUrl: string = 'https://scgcairtable.herokuapp.com/master-list';
-  pageSize: string = 'pageSize=5';
+  pageSize: string = 'pageSize=20';
   getProjects(offset: string, filters?: string) {
     if (filters && offset){
       filters = "filterByFormula=" + filters;
