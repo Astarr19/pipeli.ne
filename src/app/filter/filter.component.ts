@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ApiResponseService } from '../api-response.service';
-import { Output, EventEmitter } from '@angular/core'
 
 @Component({
   selector: 'app-filter',
@@ -14,7 +13,7 @@ export class FilterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  @Output() filtered = new EventEmitter()
+  @Output() filtered = new EventEmitter<object>()
   submit(f){
     let obj: object = {
       // name: f.value.name,
@@ -22,19 +21,19 @@ export class FilterComponent implements OnInit {
       // date: f.value["date_added"],
       // scout: f.value.scout,
       // source: f.value.source,
-      city: encodeURI(`{City}=${f.value.city}`),
+      city: f.value.city,
       // state: f.value["state_province"],
-      country: encodeURI(`{Country}=${f.value.country}`),
-      alignment: f.value.alignment,
+      country: f.value.country,
+      //alignment: encodeURI(`{Alignment}=${f.value.alignment}`),
       themes: f.value.themes,
       // technology: f.value["technology_area"],
-      landscape: f.value["landscape"],
+      // landscape: encodeURI(`{Country}=${f.value["landscape"]}`),
       // uniqueness: f.value["uniqueness"],
       // team: f.value["team"],
       // raised: f.value["raised"],
       // stage: f.value["stage"]
     };
-
+    console.log(obj);
     this.filtered.emit(obj);
   }
 }
