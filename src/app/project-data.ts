@@ -4,7 +4,8 @@ export interface Project {
 }
 
 export interface ProjectData {
-    records: Project[]
+    records: Project[],
+    offset: string
 
 }
 

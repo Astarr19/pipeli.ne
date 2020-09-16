@@ -21,7 +21,7 @@ export class ProjectDetailComponent implements OnInit {
 
 
   getProjects(): void {
-    this.api.getProjects().subscribe((response: ProjectData) => {
+    this.api.getProjects('').subscribe((response: ProjectData) => {
       console.log(response)
       this.projects = response.records
     })

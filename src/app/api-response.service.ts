@@ -22,7 +22,7 @@ export class ApiResponseService {
   }
 
   //method to pull all projects with the same Startup name from the Projects tab
-  getProjects(offset?: string) {
+  getProjects(offset: string, filters?: string) {
     if (offset){
       return this.http.get(this.apiUrl + this.projectList + offset);
     } else {
