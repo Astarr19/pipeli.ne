@@ -3,5 +3,7 @@
     <li *ngFor="let project of projects, index as i">
       <h1>{{project.fields["Project Name"]}}</h1>
       <p>{{project.fields["Project Summary"]}}</p>
+      <h2 *ngIf="noProjects">This startup has no current projects</h2>
     </li>
+    
     </div>  

@@ -13,6 +13,7 @@ export class ProjectDetailComponent implements OnInit {
   @Input() startups: Startup[];
   company: string;
   projects: Project[];
+  noProjects: boolean = false;
   startupFilter: {["Startup Engaged"]};
 
   constructor(private api:ApiResponseService) { }
@@ -26,6 +27,10 @@ export class ProjectDetailComponent implements OnInit {
     this.company = this.startups[this.index].fields["Company Name"];
     this.api.getProjects(company).subscribe((response: ProjectData) => {
       this.projects = response.records
+      console.log(this.projects);
+      if (this.projects.length == 0) {
+        this.noProjects = true;
+      }
     })
   }
 
