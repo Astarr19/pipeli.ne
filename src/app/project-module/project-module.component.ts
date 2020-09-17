@@ -75,6 +75,8 @@ export class ProjectModuleComponent implements OnInit {
   //    this.filteredValues = values.filter(project => project.category === 'Startup Engaged');
   // }
 
+  
+
   getId(index: number) {
     //Grabs the id of startup
     this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {

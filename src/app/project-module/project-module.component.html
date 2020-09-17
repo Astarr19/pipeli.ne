@@ -32,7 +32,7 @@
   </div>
       <a href="#">More Details
         <app-project-detail></app-project-detail>
-      </a> 
+      </a>  
        
     </div>
   <div class="column">
@@ -49,6 +49,7 @@
       <p>${{startup.fields["Raised"]}}</p>
     </div>
     
+    
   </div>
 
   </div>
@@ -56,6 +57,14 @@
   </div>  
 <!--</li>-->
 
+<!-- project view of startup, for test purposes -->
+<!-- <div class="project-view">
+  <h4>Project View</h4>
+  <li *ngFor="let project of projects, index as i">
+    <h1>{{project.fields["Project Name"]}}</h1>
+    <p>{{project.fields["Project Summary"]}}</p>
+  </li>
+</div>   -->
 
 
 
