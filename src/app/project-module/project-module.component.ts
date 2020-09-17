@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiResponseService } from '../api-response.service';
-import { ProjectData, Project } from '../project-data';
+import { ProjectData, Project, StartupData } from '../project-data';
 
 
 @Component({
@@ -27,6 +27,10 @@ export class ProjectModuleComponent implements OnInit {
       this.offsetArr.push(response.offset);
       this.projects = response.records;
     })
+    this.api.getStartups(this.offsetArr[0]).subscribe((response: ProjectData) => {
+      this.offsetArr.push(response.offset);
+      this.projects = response.records;
+    })
   }
 
   nextPage() {
@@ -44,6 +48,32 @@ export class ProjectModuleComponent implements OnInit {
       }
       this.lastButton = true;
       this.projects = response.records;
+    // this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
+    //   console.log(response)
+    //   this.startups = response.records
+    })
+  }
+
+
+  getProjects(): void {
+    this.api.getProjects(this.offsetArr[this.index]).subscribe((response: ProjectData) => {
+      console.log(response)
+      this.projects = response.records
+    })
+  }
+
+  //filter method for filtering project list by startup name
+  //https://stackoverflow.com/questions/50591939/angular-how-to-filter-ngfor-to-specific-object-property-data
+  //  filterProjects(): void {
+  //    this.filteredValues = values.filter(project => project.category === 'Startup Engaged');
+  // }
+
+  getId(index: number) {
+    //Grabs the id of startup
+    this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
+      this.selected = response.records[index].id;
+      console.log(this.selected)
+      return this.selected;
     })
   }
 
@@ -83,7 +113,4 @@ export class ProjectModuleComponent implements OnInit {
       this.projects = response.records;
     })
   }
-
-  
-}
-;
+};
