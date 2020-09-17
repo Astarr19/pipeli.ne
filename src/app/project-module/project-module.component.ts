@@ -55,18 +55,14 @@ export class ProjectModuleComponent implements OnInit {
   }
 
 
-  getProjects(): void {
-    this.api.getProjects(this.offsetArr[this.index]).subscribe((response: ProjectData) => {
-      console.log(response)
-      this.projects = response.records
-    })
-  }
-
-  //filter method for filtering project list by startup name
-  //https://stackoverflow.com/questions/50591939/angular-how-to-filter-ngfor-to-specific-object-property-data
-  //  filterProjects(): void {
-  //    this.filteredValues = values.filter(project => project.category === 'Startup Engaged');
+  // getProjects(): void {
+  //   this.api.getProjects(this.offsetArr[this.index]).subscribe((response: ProjectData) => {
+  //     console.log(response)
+  //     this.projects = response.records
+  //   })
   // }
+
+  
 
   getId(index: number) {
     //Grabs the id of startup
