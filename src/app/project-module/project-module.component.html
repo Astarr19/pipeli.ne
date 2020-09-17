@@ -1,64 +1,51 @@
 <app-filter (filtered)="filter($event)"></app-filter>
 
-<button *ngIf="nextButton" (click)="nextPage()">Next Page</button>
-<button *ngIf="lastButton" (click)="lastPage()">Last Page</button>
-
+<div class="pages">
+    <button *ngIf="lastButton" (click)="lastPage()">Last Page</button>
+    <button *ngIf="nextButton" (click)="nextPage()">Next Page</button>
+</div>
 <div class="container">
   <li class="project" *ngFor="let project of projects; index as i">
     <h1>{{project.fields["Company Name"]}}</h1>
     <div class="row">
       <div class="column">
-        
-        <p>{{project.fields["City"]}}, {{project.fields["Country"]}}</p>
-        <p>{{project.fields["Two Line Company Summary"]}}</p>
+        <div class="field"><p>{{project.fields["City"]}}, {{project.fields["Country"]}}</p></div>
+        <div class="field"><p>{{project.fields["Two Line Company Summary"]}}</p></div>
       <div class="review-date field">   
-        <p>Review Date:</p>&nbsp;
+        <h4>Review Date:</h4>
         <p>{{project.fields["Review Date"]}}</p>
       </div>
       <div class="scout field">
-        <p>Scout:</p>&nbsp;
+        <h4>Scout:</h4>
         <p>{{project.fields["Scout"]}}</p>
       </div> 
     <!-- <a href="{{project.fields["Company Website"]}}"></a>
     Fix to display Company Website as URL -->
       
     <div class="alignment field">
-      <p>Alignment:</p>&nbsp;
+      <h4>Alignment:</h4>
       <p>{{project.fields["Alignment"]}}</p>
     </div>
     <div class="themes field">
-      <p>Themes:</p>&nbsp;
+      <h4>Themes:</h4>
       <p>{{project.fields["Theme(s)"]}}</p>
     </div>
-    <a href="#">More Details
-      <app-project-detail></app-project-detail></a>
     </div>
     <div class="column">
       <div class="uniqueness field"> 
-        <p>Uniqueness:</p>&nbsp;
-        <p>{{project.fields["Uniqueness"]}}</p> 
+        <h4>Uniqueness:</h4>
+        <p>{{project.fields["Uniqueness"]}}/5</p> 
       </div>
       <div class="team field">
-        <p>Team:</p>&nbsp;
+        <h4>Team:</h4>
         <p>{{project.fields["Team"]}}</p>
       </div>
       <div class="raised field"> 
-        <p>Capital Raised:</p>&nbsp;
+        <h4>Capital Raised:</h4>
         <p>${{project.fields["Raised"]}}</p>
       </div>
+     </div>
     </div>
-    </div>  
+    <app-project-detail></app-project-detail>
   </li>
 </div>
-
-
-<!-- <div>
-    <ul class="items">
-        <li *ngFor="let item of items; let i = index;">
-            <span class="badge"></span> {{item.product}} {{item.price | currency}} {{item.quantity}}
-          <button class="delete" title="delete product"
-            (click)="deleteItem(item.id)">X</button>
-            <button class='edit' title='edit item' (click)="editItem()">Edit</button>
-        </li>
-      </ul>
-    </div> -->
