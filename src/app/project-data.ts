@@ -6,4 +6,14 @@ export interface Project {
 export interface ProjectData {
     records: Project[],
     offset: string
+
+}
+
+export interface Startup {
+    fields: object,
+    id: string
+}
+
+export interface StartupData {
+    records: Startup[]
 }

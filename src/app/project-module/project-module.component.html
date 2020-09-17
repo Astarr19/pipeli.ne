@@ -5,7 +5,7 @@
     <button *ngIf="nextButton" (click)="nextPage()">Next Page</button>
 </div>
 <div class="container">
-  <li class="project" *ngFor="let project of projects; index as i">
+  <li class="project" *ngFor="let startup of projects; index as i">
     <h1>{{project.fields["Company Name"]}}</h1>
     <div class="row">
       <div class="column">
