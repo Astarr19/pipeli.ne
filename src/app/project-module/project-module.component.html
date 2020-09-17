@@ -4,7 +4,7 @@
 <button *ngIf="lastButton" (click)="lastPage()">Last Page</button>
 
 <div class="container"> <!--Switch back to startups later-->
-<li class="startup" *ngFor="let startup of projects; index as i">
+<li class="startup" *ngFor="let startup of startups; index as i">
   <h1>{{startup.fields["Company Name"]}}</h1>
   <div class="row">
     <div class="column">
@@ -30,32 +30,13 @@
     <p>Themes:</p>&nbsp;
     <p>{{startup.fields["Theme(s)"]}}</p>
   </div>
-      <a href="#">More Details
-        <app-project-detail></app-project-detail>
-      </a>  
-       
+           
     </div>
-  <div class="column">
-    <div class="uniqueness field">  
-      <p>Uniqueness:</p>&nbsp;
-      <p>{{startup.fields["Uniqueness"]}}</p> 
-    </div>
-    <div class="team field">
-      <p>Team:</p>&nbsp;
-      <p>{{startup.fields["Team"]}}</p>
-    </div>
-    <div class="raised field"> 
-      <p>Capital Raised:</p>&nbsp;
-      <p>${{startup.fields["Raised"]}}</p>
-    </div>
-    
-    
   </div>
-
-  </div>
-  
-  </div>  
-<!--</li>-->
+  <app-project-detail [index]="[i]" [startups]="startups"></app-project-detail>
+</li>
+</div>  
+<!-- Button to toggle project view --> 
 
 <!-- project view of startup, for test purposes -->
 <!-- <div class="project-view">

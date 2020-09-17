@@ -16,4 +16,5 @@ export interface Startup {
 
 export interface StartupData {
     records: Startup[]
+    offset: string
 }
