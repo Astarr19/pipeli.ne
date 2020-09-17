@@ -83,5 +83,5 @@ export class ProjectModuleComponent implements OnInit {
       this.projects = response.records;
     })
   }
-}
-;
+};
+
