@@ -22,7 +22,7 @@ export class ProjectModuleComponent implements OnInit {
 
   ngOnInit(): void {
     //Populates the page with all startups
-    this.api.getStartups(this.offsetArr[0]).subscribe((response: ProjectData) => {
+    this.api.getStartups(this.offsetArr[0]).subscribe((response: StartupData) => {
       this.offsetArr.push(response.offset);
       this.startups = response.records;
       this.fixAlignment(this.startups);
@@ -31,7 +31,7 @@ export class ProjectModuleComponent implements OnInit {
 
   nextPage() {
     this.index++;
-    this.api.getStartups(this.offsetArr[this.index], this.filters).subscribe((response:ProjectData) => {
+    this.api.getStartups(this.offsetArr[this.index], this.filters).subscribe((response:StartupData) => {
       if ((this.index + 1) >= this.offsetArr.length) {
         if (response.offset !== undefined) {
           this.offsetArr.push(response.offset);
@@ -62,7 +62,7 @@ export class ProjectModuleComponent implements OnInit {
   }
 
   getstartups(): void {
-    this.api.getStartups(this.offsetArr[this.index]).subscribe((response: ProjectData) => {
+    this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
       console.log(response)
       this.startups = response.records
     })
