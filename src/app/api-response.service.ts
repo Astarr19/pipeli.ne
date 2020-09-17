@@ -13,9 +13,16 @@ export class ApiResponseService {
   //get all function for getting list of all startups in project-module component
   //change getProjects to getStartups?
   getStartups(offset: string, filters?: string) {
-    if (offset){
-      return this.http.get(`${this.apiUrl}/${this.masterList}?${this.pageSize}&${offset}`);
-
+    if (filters && offset){
+      filters = "filterByFormula=" + filters;
+      offset = "offset=" + offset;
+      return this.http.get(`${this.apiUrl}/${this.masterList}?${this.pageSize}&${filters}&${offset}`);
+    } else if (filters) {
+      filters = "filterByFormula=" + filters;
+      return this.http.get(`${this.apiUrl}/${this.masterList}?${this.pageSize}&${filters}`);
+    } else if (offset) {
+      offset = "offset=" + offset;
+      return this.http.get(`${this.apiUrl}/${this.masterList}?${this.pageSize}&${offset}`)
     } else {
       return this.http.get(`${this.apiUrl}/${this.masterList}?${this.pageSize}`);
     }
