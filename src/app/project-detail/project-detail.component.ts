@@ -9,26 +9,22 @@ import { ProjectData, Project, StartupData, Startup } from '../project-data';
 })
 export class ProjectDetailComponent implements OnInit {
 
-  @Input() project: Project;
-
+  @Input() index: number;
+  @Input() startups: Startup[];
+  company: string;
   projects: Project[];
   startupFilter: {["Startup Engaged"]};
-  // selected: string;
-  // formStatus: boolean = true;
-  // nextButton: boolean = true;
-  // lastButton: boolean = false;
-  // index: number = 0;
-  // offsetArr: string[] = [''];
-  // filters: string;
 
   constructor(private api:ApiResponseService) { }
 
   ngOnInit(): void {
+    console.log(this.index, this.startups)
+    this.company = encodeURI(`{Startup Engaged} = '${this.startups[this.index].fields["Company Name"]}'`)
   }
 
-  getProjects(): void {
-    this.api.getProjects('').subscribe((response: ProjectData) => {
-      console.log(response)
+  getProjects(company: string): void {
+    this.company = this.startups[this.index].fields["Company Name"];
+    this.api.getProjects(company).subscribe((response: ProjectData) => {
       this.projects = response.records
     })
   }
