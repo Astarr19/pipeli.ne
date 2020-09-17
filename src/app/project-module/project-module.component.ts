@@ -23,19 +23,16 @@ export class ProjectModuleComponent implements OnInit {
 
   ngOnInit(): void {
     //Populates the page with all startups
-    this.api.getProjects(this.offsetArr[0]).subscribe((response: ProjectData) => {
-      this.offsetArr.push(response.offset);
-      this.projects = response.records;
-    })
     this.api.getStartups(this.offsetArr[0]).subscribe((response: ProjectData) => {
       this.offsetArr.push(response.offset);
       this.projects = response.records;
+      this.fixAlignment(this.projects);
     })
   }
 
   nextPage() {
     this.index++;
-    this.api.getProjects(this.offsetArr[this.index], this.filters).subscribe((response:ProjectData) => {
+    this.api.getStartups(this.offsetArr[this.index], this.filters).subscribe((response:ProjectData) => {
       if ((this.index + 1) >= this.offsetArr.length) {
         if (response.offset !== undefined) {
           this.offsetArr.push(response.offset);
@@ -48,15 +45,25 @@ export class ProjectModuleComponent implements OnInit {
       }
       this.lastButton = true;
       this.projects = response.records;
+      this.fixAlignment(this.projects);
     // this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
     //   console.log(response)
     //   this.startups = response.records
     })
   }
 
+  fixAlignment(startups: Project[]) {
+    startups.forEach((startup: Project)=>{
+      if (startup.fields["Alignment"]) {
+        startup.fields["Alignment"] = startup.fields["Alignment"].split(",").map((Alignment)=>{
+          return Alignment.trim();
+        }).join(", ")
+      }
+    })
+  }
 
   getProjects(): void {
-    this.api.getProjects(this.offsetArr[this.index]).subscribe((response: ProjectData) => {
+    this.api.getStartups(this.offsetArr[this.index]).subscribe((response: ProjectData) => {
       console.log(response)
       this.projects = response.records
     })
@@ -83,8 +90,9 @@ export class ProjectModuleComponent implements OnInit {
     }
     this.index--;
     this.nextButton = true;
-    this.api.getProjects(this.offsetArr[this.index], this.filters).subscribe((response:ProjectData) => {
+    this.api.getStartups(this.offsetArr[this.index], this.filters).subscribe((response:ProjectData) => {
       this.projects = response.records;
+      this.fixAlignment(this.projects);
     })
   }
 
@@ -103,12 +111,12 @@ export class ProjectModuleComponent implements OnInit {
       if (str !== '') {
         str += '&';
       }
-      str += encodeURI(`{themes}='${obj["themes"]}'`);
+      str += encodeURI(`{theme(s)}='${obj["themes"]}'`);
     }
     this.filters = str;
     this.offsetArr = [''];
     this.index = 0;
-    this.api.getProjects(this.offsetArr[this.index], str).subscribe((response: ProjectData) => {
+    this.api.getStartups(this.offsetArr[this.index], str).subscribe((response: ProjectData) => {
       this.offsetArr.push(response.offset);
       this.projects = response.records;
     })
