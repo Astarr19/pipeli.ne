@@ -1,4 +1,5 @@
 <div class="project-view">
+    <!-- When this button fires it displays the projects attached to the startup -->
     <button (click)="getProjects()">More details</button>
     <li *ngFor="let project of projects, index as i">
       <h1>{{project.fields["Project Name"]}}</h1>
