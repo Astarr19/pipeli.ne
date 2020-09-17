@@ -1,7 +1,8 @@
 <app-filter (filtered)="filter($event)"></app-filter>
-
+<div class="pages">
 <button *ngIf="nextButton" (click)="nextPage()">Next Page</button>
 <button *ngIf="lastButton" (click)="lastPage()">Last Page</button>
+</div>
 
 <div class="container"> <!--Switch back to startups later-->
 <li class="startup" *ngFor="let startup of projects; index as i">
@@ -9,43 +10,41 @@
   <div class="row">
     <div class="column">
       
-      <p>{{startup.fields["City"]}}, {{startup.fields["Country"]}}</p>
-      <p>{{startup.fields["Two Line Company Summary"]}}</p>
+      <div class="field"><p>{{startup.fields["City"]}}, {{startup.fields["Country"]}}</p></div>
     <div class="review-date field">   
-      <p>Review Date:</p>&nbsp;
+      <h4>Review Date:</h4>
       <p>{{startup.fields["Review Date"]}}</p>
     </div>
     <div class="scout field">
-      <p>Scout:</p>&nbsp;
+      <h4>Scout:</h4>
       <p>{{startup.fields["Scout"]}}</p>
     </div> 
   <!-- <a href="{{startup.fields["Company Website"]}}"></a>
   Fix to display Company Website as URL -->
     
   <div class="alignment field">
-    <p>Alignment:</p>&nbsp;
+    <h4>Alignment:</h4>
     <p>{{startup.fields["Alignment"]}}</p>
   </div>
   <div class="themes field">
-    <p>Themes:</p>&nbsp;
+    <h4>Themes:</h4>
     <p>{{startup.fields["Theme(s)"]}}</p>
   </div>
-      <a href="#">More Details
-        <app-project-detail></app-project-detail>
-      </a>  
+         
        
     </div>
   <div class="column">
+    <div class="field"><p>{{startup.fields["Two Line Company Summary"]}}</p></div>
     <div class="uniqueness field">  
-      <p>Uniqueness:</p>&nbsp;
-      <p>{{startup.fields["Uniqueness"]}}</p> 
+      <h4>Uniqueness:</h4>
+      <p>{{startup.fields["Uniqueness"]}}/5</p> 
     </div>
     <div class="team field">
-      <p>Team:</p>&nbsp;
+      <h4>Team:</h4>
       <p>{{startup.fields["Team"]}}</p>
     </div>
     <div class="raised field"> 
-      <p>Capital Raised:</p>&nbsp;
+      <h4>Capital Raised:</h4>
       <p>${{startup.fields["Raised"]}}</p>
     </div>
     
@@ -53,7 +52,7 @@
   </div>
 
   </div>
-  
+  <app-project-detail></app-project-detail>
   </div>  
 <!--</li>-->
 

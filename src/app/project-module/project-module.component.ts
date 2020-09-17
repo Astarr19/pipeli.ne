@@ -110,3 +110,4 @@ export class ProjectModuleComponent implements OnInit {
     })
   }
 };
+
