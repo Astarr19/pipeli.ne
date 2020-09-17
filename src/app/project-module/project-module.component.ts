@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiResponseService } from '../api-response.service';
-import { ProjectData, Project, StartupData, Startup } from '../project-data';
+import { ProjectData, Project } from '../project-data';
 
 
 @Component({
@@ -12,7 +12,6 @@ export class ProjectModuleComponent implements OnInit {
 
   constructor(private api:ApiResponseService) { }
   
-  startups: Startup[];
   projects: Project[];
   selected: string;
   formStatus: boolean = true;
@@ -21,15 +20,10 @@ export class ProjectModuleComponent implements OnInit {
   index: number = 0;
   offsetArr: string[] = [''];
   filters: string;
-  
 
   ngOnInit(): void {
     //Populates the page with all startups
-    this.api.getStartups(this.offsetArr[0]).subscribe((response: ProjectData) => {
-      this.offsetArr.push(response.offset);
-      this.startup = response.records;
-    })
-    this.api.getStartups(this.offsetArr[0]).subscribe((response: StartupData) => {
+    this.api.getProjects(this.offsetArr[0]).subscribe((response: ProjectData) => {
       this.offsetArr.push(response.offset);
       this.projects = response.records;
     })
@@ -37,7 +31,7 @@ export class ProjectModuleComponent implements OnInit {
 
   nextPage() {
     this.index++;
-    this.api.getStartups(this.offsetArr[this.index], this.filters).subscribe((response:StartupData) => {
+    this.api.getProjects(this.offsetArr[this.index], this.filters).subscribe((response:ProjectData) => {
       if ((this.index + 1) >= this.offsetArr.length) {
         if (response.offset !== undefined) {
           this.offsetArr.push(response.offset);
@@ -50,28 +44,6 @@ export class ProjectModuleComponent implements OnInit {
       }
       this.lastButton = true;
       this.projects = response.records;
-    // this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
-    //   console.log(response)
-    //   this.startups = response.records
-    })
-  }
-
-
-  // getProjects(): void {
-  //   this.api.getProjects(this.offsetArr[this.index]).subscribe((response: StartupData) => {
-  //     console.log(response)
-  //     this.projects = response.records
-  //   })
-  // }
-
-  
-
-  getId(index: number) {
-    //Grabs the id of startup
-    this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
-      this.selected = response.records[index].id;
-      console.log(this.selected)
-      return this.selected;
     })
   }
 
@@ -81,7 +53,7 @@ export class ProjectModuleComponent implements OnInit {
     }
     this.index--;
     this.nextButton = true;
-    this.api.getStartups(this.offsetArr[this.index], this.filters).subscribe((response:StartupData) => {
+    this.api.getProjects(this.offsetArr[this.index], this.filters).subscribe((response:ProjectData) => {
       this.projects = response.records;
     })
   }
@@ -106,9 +78,10 @@ export class ProjectModuleComponent implements OnInit {
     this.filters = str;
     this.offsetArr = [''];
     this.index = 0;
-    this.api.getStartups(this.offsetArr[this.index], str).subscribe((response: StartupData) => {
+    this.api.getProjects(this.offsetArr[this.index], str).subscribe((response: ProjectData) => {
       this.offsetArr.push(response.offset);
       this.projects = response.records;
     })
   }
-};
+}
+;
