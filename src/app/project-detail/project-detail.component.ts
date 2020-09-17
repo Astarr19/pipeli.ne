@@ -30,7 +30,7 @@ export class ProjectDetailComponent implements OnInit {
   //filter method for filtering project list by startup name
   //https://stackoverflow.com/questions/50591939/angular-how-to-filter-ngfor-to-specific-object-property-data
    filterProjects(): void {
-     //this.filteredValues = values.filter(project => project.category === 'Startup Engaged');
+     //this.filterProjects = this.projects.filter(project => project.category === 'Startup Engaged');
   }
 
 }
