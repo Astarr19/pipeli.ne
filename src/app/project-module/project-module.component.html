@@ -30,30 +30,13 @@
     <p>Themes:</p>&nbsp;
     <p>{{startup.fields["Theme(s)"]}}</p>
   </div>
-      <!-- Button to toggle project view -->
-        <app-project-detail></app-project-detail>      
+           
     </div>
-  <div class="column">
-    <div class="uniqueness field">  
-      <p>Uniqueness:</p>&nbsp;
-      <p>{{startup.fields["Uniqueness"]}}</p> 
-    </div>
-    <div class="team field">
-      <p>Team:</p>&nbsp;
-      <p>{{startup.fields["Team"]}}</p>
-    </div>
-    <div class="raised field"> 
-      <p>Capital Raised:</p>&nbsp;
-      <p>${{startup.fields["Raised"]}}</p>
-    </div>
-    
-    
   </div>
-
-  </div>
-  
-  </div>  
-<!--</li>-->
+  <app-project-detail [index]="[i]" [startups]="startups"></app-project-detail>
+</li>
+</div>  
+<!-- Button to toggle project view --> 
 
 <!-- project view of startup, for test purposes -->
 <!-- <div class="project-view">

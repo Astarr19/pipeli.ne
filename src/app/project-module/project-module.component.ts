@@ -94,7 +94,7 @@ export class ProjectModuleComponent implements OnInit {
       if (str !== '') {
         str += '&';
       }
-      str += encodeURI(`{themes}='${obj["themes"]}'`);
+      str += encodeURI(`{theme(s)}='${obj["themes"]}'`);
     }
     this.filters = str;
     this.offsetArr = [''];
