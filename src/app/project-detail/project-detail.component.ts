@@ -9,28 +9,29 @@ import { ProjectData, Project, StartupData, Startup } from '../project-data';
 })
 export class ProjectDetailComponent implements OnInit {
 
-  @Input() project: Project;
-
+  @Input() index: number;
+  @Input() startups: Startup[];
+  company: string;
   projects: Project[];
+  noProjects: boolean = false;
   startupFilter: {["Startup Engaged"]};
 
   constructor(private api:ApiResponseService) { }
 
   ngOnInit(): void {
+    console.log(this.index, this.startups)
+    this.company = encodeURI(`{Startup Engaged} = '${this.startups[this.index].fields["Company Name"]}'`)
   }
 
-
-  getProjects(): void {
-    this.api.getProjects('').subscribe((response: ProjectData) => {
-      console.log(response)
+  getProjects(company: string): void {
+    this.company = this.startups[this.index].fields["Company Name"];
+    this.api.getProjects(company).subscribe((response: ProjectData) => {
       this.projects = response.records
+      console.log(this.projects);
+      if (this.projects.length == 0) {
+        this.noProjects = true;
+      }
     })
-  }
-
-  //filter method for filtering project list by startup name
-  //https://stackoverflow.com/questions/50591939/angular-how-to-filter-ngfor-to-specific-object-property-data
-   filterProjects(): void {
-     //this.filterProjects = this.projects.filter(project => project.category === 'Startup Engaged');
   }
 
 }
