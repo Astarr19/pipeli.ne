@@ -13,24 +13,24 @@ export class ProjectDetailComponent implements OnInit {
 
   projects: Project[];
   startupFilter: {["Startup Engaged"]};
+  // selected: string;
+  // formStatus: boolean = true;
+  // nextButton: boolean = true;
+  // lastButton: boolean = false;
+  // index: number = 0;
+  // offsetArr: string[] = [''];
+  // filters: string;
 
   constructor(private api:ApiResponseService) { }
 
   ngOnInit(): void {
   }
 
-
   getProjects(): void {
     this.api.getProjects('').subscribe((response: ProjectData) => {
       console.log(response)
       this.projects = response.records
     })
-  }
-
-  //filter method for filtering project list by startup name
-  //https://stackoverflow.com/questions/50591939/angular-how-to-filter-ngfor-to-specific-object-property-data
-   filterProjects(): void {
-     //this.filterProjects = this.projects.filter(project => project.category === 'Startup Engaged');
   }
 
 }
