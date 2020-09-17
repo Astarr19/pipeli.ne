@@ -1,14 +1,71 @@
-<p>project-module works!</p>
-<h2>Project "Big Chungus"</h2>
-<p>Criteria Indicators Go Here</p>
-<h3>Overview/Quick Synopsis</h3>
-<ul>
-    <li>Startup Name (Startup City) (flag?)</li>
-    <li>Project Summary</li>
-    <li>Amount Raised $$$</li>
-    <li>Engagement Phase</li>
-    <li>Engagement Type (Engagement Progress color coded?)</li>
-    <li>Amount raised</li>
-    <li>Project Lead (person's name)</li>
-    <li>Last Update's Date</li>
-</ul>
+<app-filter (filtered)="filter($event)"></app-filter>
+
+<button *ngIf="nextButton" (click)="nextPage()">Next Page</button>
+<button *ngIf="lastButton" (click)="lastPage()">Last Page</button>
+
+<div class="container"> <!--Switch back to startups later-->
+<li class="startup" *ngFor="let startup of projects; index as i">
+  <h1>{{startup.fields["Company Name"]}}</h1>
+  <div class="row">
+    <div class="column">
+      
+      <p>{{startup.fields["City"]}}, {{startup.fields["Country"]}}</p>
+      <p>{{startup.fields["Two Line Company Summary"]}}</p>
+    <div class="review-date field">   
+      <p>Review Date:</p>&nbsp;
+      <p>{{startup.fields["Review Date"]}}</p>
+    </div>
+    <div class="scout field">
+      <p>Scout:</p>&nbsp;
+      <p>{{startup.fields["Scout"]}}</p>
+    </div> 
+  <!-- <a href="{{startup.fields["Company Website"]}}"></a>
+  Fix to display Company Website as URL -->
+    
+  <div class="alignment field">
+    <p>Alignment:</p>&nbsp;
+    <p>{{startup.fields["Alignment"]}}</p>
+  </div>
+  <div class="themes field">
+    <p>Themes:</p>&nbsp;
+    <p>{{startup.fields["Theme(s)"]}}</p>
+  </div>
+      <a href="#">More Details
+        <app-project-detail></app-project-detail>
+      </a>  
+       
+    </div>
+  <div class="column">
+    <div class="uniqueness field">  
+      <p>Uniqueness:</p>&nbsp;
+      <p>{{startup.fields["Uniqueness"]}}</p> 
+    </div>
+    <div class="team field">
+      <p>Team:</p>&nbsp;
+      <p>{{startup.fields["Team"]}}</p>
+    </div>
+    <div class="raised field"> 
+      <p>Capital Raised:</p>&nbsp;
+      <p>${{startup.fields["Raised"]}}</p>
+    </div>
+    
+    
+  </div>
+
+  </div>
+  
+  </div>  
+<!--</li>-->
+
+<!-- project view of startup, for test purposes -->
+<!-- <div class="project-view">
+  <h4>Project View</h4>
+  <li *ngFor="let project of projects, index as i">
+    <h1>{{project.fields["Project Name"]}}</h1>
+    <p>{{project.fields["Project Summary"]}}</p>
+  </li>
+</div>   -->
+
+
+
+
