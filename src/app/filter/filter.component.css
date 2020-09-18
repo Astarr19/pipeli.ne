@@ -1,5 +1,5 @@
 * {
-    font-family: Helvetica, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   }
 
 
@@ -7,37 +7,27 @@
   {
     display: flex;
     flex-flow: column wrap;
+    border: none;
+    max-width: 900px;
+    width: 100%;
   }
 
   div
   {
     display: flex;
     flex-flow: column nowrap;
+    box-sizing: border-box;
+  }
 
-    margin: 10px 50px;
+  label
+  {
+    margin-top: 30px;
   }
   
-
-
-  .container {
-      display: flex;
-      align-content: center;
-      flex-direction: column;
-      padding-left: 10%;
-      padding-right: 10%;
-  
+  input {
+    height: 5px;
   }
-  
-  .project {
-    display: flex;
-    align-content: center;
-    flex-direction: column;
-    border: 1px solid lightgray;
-    padding: 20px;
-    margin: 15px;
-    box-shadow: 0px -1px 10px -4px rgba(0,0,0,0.40);
-    border-radius: 10px;
-  }
+
   
   .field {
     display: flex;
@@ -56,18 +46,54 @@
     margin: 5px 0 5px 0;
     padding: 0;
   }
-  
-  /* test for two-column view */
-  .row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
+
+  input {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    background-color: transparent;
+    padding: 10px;
   }
   
-  .column {
+  .no-outline:focus {
+    outline: none;
+  }
+
+  input:focus, textarea:focus, select:focus{
+    outline: none;
+  }
+
+  .container {
     display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
-    flex: 1;
+    /* background-color: #477C80; */
+    width: 100%;
+    margin: 0;
+    border: 1px solid lightgray;
+    box-shadow: 0px -1px 10px -4px rgba(0,0,0,0.40);
+    background-color: white;
+    padding: 10px 50px;
+    box-sizing: border-box;
+
+    align-items: center;
+  }
+
+  button {
+    width: 150px;
+  }
+
+  .buttons {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    font-size: medium;
+  }
+
+  .reset
+  {
+    background: #ff6666;
+  }
+
+  .reset:hover
+  {
+    background:#990000;
   }

@@ -1,6 +1,5 @@
 <div class="project-view">
-    <!-- When this button fires it displays the projects attached to the startup -->
-    <button (click)="getProjects()">More details</button>
+    <button (click)="getProjects(company)"><i class="material-icons md-48">unfold_more</i>More details</button>
     <li *ngFor="let project of projects, index as i">
       <h1>{{project.fields["Project Name"]}}</h1>
       <p>{{project.fields["Project Summary"]}}</p>
