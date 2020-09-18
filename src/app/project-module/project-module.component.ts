@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ApiResponseService } from '../api-response.service';
 import { ProjectData, Project, Startup, StartupData } from '../project-data';
 
+import { getUnicodeFlagIcon } from 'country-flag-icons/unicode'
+
 @Component({
   selector: 'app-project-module',
   templateUrl: './project-module.component.html',
