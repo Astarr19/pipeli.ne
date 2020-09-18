@@ -99,8 +99,8 @@ export class ProjectModuleComponent implements OnInit {
 
   filter(obj: object) {
     this.filteredStartups = this.startups.filter((el)=>{
-      el.fields["Company Name"].includes(obj["name"]);
-      console.log(this.filteredStartups)
+      return el.fields["Company Name"].includes(obj["name"]);
     })
+    console.log(this.filteredStartups)
   }
 };
