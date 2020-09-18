@@ -1,8 +1,5 @@
 <app-filter (filtered)="filter($event)"></app-filter>
 
-<button *ngIf="nextButton" (click)="nextPage()">Next Page</button>
-<button *ngIf="lastButton" (click)="lastPage()">Last Page</button>
-
 <div class="container"> <!--Switch back to startups later-->
 <li class="startup" *ngFor="let startup of startups; index as i">
   <h1>{{startup.fields["Company Name"]}}</h1>

@@ -1,10 +1,40 @@
-<div class="project-view">
+<div class="container">
     <!-- When this button fires it displays the projects attached to the startup -->
-    <button (click)="getProjects()">More details</button>
+    <button (click)="getProjects(company)">More details</button>
     <li *ngFor="let project of projects, index as i">
-      <h1>{{project.fields["Project Name"]}}</h1>
-      <p>{{project.fields["Project Summary"]}}</p>
-      <h2 *ngIf="noProjects">This startup has no current projects</h2>
+      <h2>{{ project.fields["Project Name"] }}</h2>
+      <div class ="row">
+        <div class="column">
+          <div class="summary">
+            <p>{{ project.fields["Project Summary"] }}</p>
+          </div>
+          <div class = "engagement-phase:">
+            <p>Engagement Phase:</p>&nbsp;
+            <p>{{ project.fields["Engagement Phase"] }}</p>
+          </div>
+          <div class = "engagement-progress">
+            <p>Engagement Progress:</p>&nbsp;
+            <p>{{ project.fields["Engagement Progress"] }}</p>
+          </div>
+          <div class = "ongoing-status">
+            <p>Ongoing Status:</p>&nbsp;
+            <p>{{ project.fields["Ongoing Status"] }}</p>
+          </div>
+        </div>
+        <div class = "column">
+          <!-- Project Lead, Status Schedule, First Engagement End Date, ?Post Engagement Maturity Score, ?"Parnters Interested in Secondary Engagement", ?Type of Engagement,  ?Post-Engagement Seamless Investment -->
+            <div class = "project-lead">
+              <p>Project Lead:</p>&nbsp;
+              <p>{{ project.fields["Project Lead"]</p>
+            </div>
+            <div class = "status-schedule">
+              <p>Statuses:</p>&nbsp;
+              <p>{{ project.fields["Status Schedule"]</p>
+            </div>
+        </div>
+      </div>
+      <h2 *ngIf="noProjects">This startup has no current projects.</h2>
+     
     </li>
     
     </div>  

@@ -1,7 +1,8 @@
 <form #f="ngForm" (submit)="submit(f)">
-    <!-- <div><label for="name">NAME</label>
+    <div><label for="name">NAME</label>
     <input type="text" id="name" name="name" ngModel></div>
 
+    <!--
     <div><label for="review_date">REVIEW DATE</label>
     <input type="date" id="review_date" name="review_date" ngModel></div>
 
@@ -62,13 +63,19 @@
         <option value="Priority"></option>
     </datalist></div> -->
 
-    <div><label for="themes">THEMES</label>
+    <!-- <div><label for="themes">THEMES</label>
     <input list="themes" name="themes" ngModel>
     <datalist id="themes">
         <option value="Health Beyond the Hospital"></option>
         <option value="Robust Future"></option>
         <option value="The Good Life"></option>
-    </datalist></div>
+    </datalist></div> -->
+    <label for="Health">Health Beyond the Hospital</label>
+    <input type="radio" id="themes" name="health" value="Health Beyond the Hospital" ngModel>
+    <label for="Future">Robust Future</label>
+    <input type="radio" id="themes" name="future" value="Robust Future" ngModel>
+    <label for="TLife">The Good Life</label>
+    <input type="radio" id="themes" name="life" value="The Good Life" ngModel>
 
     <!-- <div><label for="technology_areas">TECHNOLOGY AREA</label>
     <input list="technology_areas" name="technology_areas" ngModel>

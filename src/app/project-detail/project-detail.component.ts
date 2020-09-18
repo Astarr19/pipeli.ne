@@ -28,7 +28,7 @@ export class ProjectDetailComponent implements OnInit {
     this.api.getProjects(company).subscribe((response: ProjectData) => {
       this.projects = response.records
       console.log(this.projects);
-      if (this.projects.length == 0) {
+      if (this.projects === undefined) {
         this.noProjects = true;
       }
     })
