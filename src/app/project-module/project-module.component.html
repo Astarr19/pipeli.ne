@@ -1,49 +1,69 @@
 <app-filter (filtered)="filter($event)"></app-filter>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 <div class="pages">
-    <button *ngIf="nextButton" (click)="nextPage()">Next Page</button>
-    <button *ngIf="lastButton" (click)="lastPage()">Last Page</button>
+<button *ngIf="lastButton" (click)="lastPage()"><i class="material-icons md-48">keyboard_arrow_left</i>Last Page</button>
+<button *ngIf="nextButton" (click)="nextPage()"><i class="material-icons md-48">keyboard_arrow_right</i>Next Page</button>
 </div>
 
 <div class="container"> <!--Switch back to startups later-->
-    <li class="startup" *ngFor="let startup of startups; index as i">
-    <h1>{{startup.fields["Company Name"]}}</h1>
-    <div class="row">
-        <div class="column">
-            <div class="field"><p>{{startup.fields["City"]}}, {{startup.fields["Country"]}}</p></div>
-            <div class="review-date field">   
-                <h4>Review Date:</h4>
-                <p>{{startup.fields["Review Date"]}}</p>
-            </div>
-            <div class="scout field">
-                <h4>Scout:</h4>
-                <p>{{startup.fields["Scout"]}}</p>
-            </div> 
-            <!-- <a href="{{startup.fields["Company Website"]}}"></a> Fix to display Company Website as URL -->
-    
-            <div class="alignment field">
-                <h4>Alignment:</h4>
-                <p>{{startup.fields["Alignment"]}}</p>
-            </div>
-            <div class="themes field">
-                <h4>Themes:</h4>
-                <p>{{startup.fields["Theme(s)"]}}</p>
-            </div>      
-        </div>
-        <div class="column">
-            <div class="field"><p>{{startup.fields["Two Line Company Summary"]}}</p></div>
-            <div class="uniqueness field">  
-                <h4>Uniqueness:</h4>
-                <p>{{startup.fields["Uniqueness"]}}/5</p> 
-            </div>
-            <div class="team field">
-                <h4>Team:</h4>
-                <p>{{startup.fields["Team"]}}</p>
-            </div>
-            <div class="raised field"> 
-                <h4>Capital Raised:</h4>
-                <p>${{startup.fields["Raised"]}}</p>
-            </div>  
-        </div>
+<li class="startup" *ngFor="let startup of startups; index as i">
+  <h1>{{startup.fields["Company Name"]}}</h1>
+  <div class="row">
+    <div class="column">
+      
+      <div class="field"><p>{{startup.fields["City"]}}, {{startup.fields["Country"]}}</p></div>
+    <div class="review-date field">   
+      <h4>Review Date:</h4>
+      <p>{{startup.fields["Review Date"]}}</p>
     </div>
-    <app-project-detail [index]="[i]" [startups]="startups"></app-project-detail>
-</div>
+    <div class="scout field">
+      <h4>Scout:</h4>
+      <p>{{startup.fields["Scout"]}}</p>
+    </div> 
+  <!-- <a href="{{startup.fields["Company Website"]}}"></a>
+  Fix to display Company Website as URL -->
+    
+  <div class="alignment field">
+    <h4>Alignment:</h4>
+    <p>{{startup.fields["Alignment"]}}</p>
+  </div>
+  <div class="themes field">
+    <h4>Themes:</h4>
+    <p>{{startup.fields["Theme(s)"]}}</p>
+  </div>
+           
+    </div>
+    <div class="column">
+      <div class="field"><p>{{startup.fields["Two Line Company Summary"]}}</p></div>
+      <div class="uniqueness field">  
+          <h4>Uniqueness:</h4>
+          <p>{{startup.fields["Uniqueness"]}}/5</p> 
+      </div>
+      <div class="team field">
+          <h4>Team:</h4>
+          <p>{{startup.fields["Team"]}}</p>
+      </div>
+      <div class="raised field"> 
+          <h4>Capital Raised:</h4>
+          <p>${{startup.fields["Raised"]}}</p>
+      </div>  
+  </div>
+  </div>
+  <app-project-detail [index]="[i]" [startups]="startups"></app-project-detail>
+</li>
+</div>  
+<!-- Button to toggle project view --> 
+
+<!-- project view of startup, for test purposes -->
+<!-- <div class="project-view">
+  <h4>Project View</h4>
+  <li *ngFor="let project of projects, index as i">
+    <h1>{{project.fields["Project Name"]}}</h1>
+    <p>{{project.fields["Project Summary"]}}</p>
+  </li>
+</div>   -->
+
+
+
+
