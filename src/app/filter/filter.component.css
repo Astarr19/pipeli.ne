@@ -97,3 +97,10 @@
   {
     background:#990000;
   }
+
+  button
+  {
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+  }

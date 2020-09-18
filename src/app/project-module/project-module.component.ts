@@ -125,6 +125,7 @@ export class ProjectModuleComponent implements OnInit {
     this.api.getStartups(this.offsetArr[this.index], str).subscribe((response: ProjectData) => {
       this.offsetArr.push(response.offset);
       this.startups = response.records;
+      this.fixAlignment(this.startups);
     })
   }
 };
