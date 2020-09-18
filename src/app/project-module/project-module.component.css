@@ -10,13 +10,6 @@
     background-color:lightgrey;
 }
 
-.pages
-{
-    display: flex;
-    justify-content: center;
-    margin: 10px;
-}
-
 .container {
     display: flex;
     align-content: center;
@@ -78,5 +71,9 @@ button
 {
     display: flex;
     align-items: center;
-    padding-left: 20px;
+}
+
+.link a
+{
+    text-decoration: underline; 
 }

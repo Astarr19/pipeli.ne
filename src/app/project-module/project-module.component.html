@@ -3,7 +3,7 @@
       rel="stylesheet">
 <div class="pages">
 <button *ngIf="lastButton" (click)="lastPage()"><i class="material-icons md-48">keyboard_arrow_left</i>Last Page</button>
-<button *ngIf="nextButton" (click)="nextPage()"><i class="material-icons md-48">keyboard_arrow_right</i>Next Page</button>
+<button *ngIf="nextButton" (click)="nextPage()">Next Page<i class="material-icons md-48">keyboard_arrow_right</i></button>
 </div>
 
 <div class="container"> <!--Switch back to startups later-->
@@ -20,9 +20,11 @@
     <div class="scout field">
       <h4>Scout:</h4>
       <p>{{startup.fields["Scout"]}}</p>
-    </div> 
-  <!-- <a href="{{startup.fields["Company Website"]}}"></a>
-  Fix to display Company Website as URL -->
+    </div>
+    <div class="link field">
+        <h4>Website:</h4>
+        <a href="https://www.seamlessiot.com">{{startup.fields["Company Website"]}}</a>
+    </div>
     
   <div class="alignment field">
     <h4>Alignment:</h4>
@@ -30,7 +32,7 @@
   </div>
   <div class="themes field">
     <h4>Themes:</h4>
-    <p>{{startup.fields["Theme(s)"]}}</p>
+    <p>{{startup.fields["Themes"]}}</p>
   </div>
            
     </div>
