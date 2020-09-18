@@ -1,32 +1,8 @@
 <div class="container">
 <form #f="ngForm" (submit)="submit(f)">
-    <!-- <div><label for="name">NAME</label>
-    <input type="text" id="name" name="name" ngModel></div>
-
-    <div><label for="review_date">REVIEW DATE</label>
-    <input type="date" id="review_date" name="review_date" ngModel></div>
-
-    <div><label for="date_added">DATE ADDED</label>
-    <input type="date" id="date_added" name="date_added" ngModel></div>
-
-    <div><label for="scout">SCOUT</label>
-    <input list="scout" name="scout" ngModel>
-    <datalist id="scout">
-        <option value="Bissel"></option>
-        <option value="John"></option>
-        <option value="Mark"></option>
-        <option value="Matt"></option>
-        <option value="Ryan"></option>
-    </datalist></div>
-
-    <div><label for="source">SOURCE</label>
-    <input type="text" id="source" name="source" ngModel></div> -->
 
     <div><label for="city">CITY</label>
     <input type="text" id="city" name="city" ngModel></div>
-
-    <!-- <div><label for="state_province">STATE/PROVINCE</label>
-    <input type="text" id="state_province" name="state_province" ngModel></div> -->
 
     <div><label for="country">COUNTRY</label>
     <input list="country" name="country" ngModel>
@@ -49,20 +25,6 @@
         <option value="USA"></option>
     </datalist></div>
 
-    <!-- <div><label for="alignment">ALIGNMENT</label>
-    <input list="alignment" name="alignment" ngModel>
-    <datalist id="alignment">
-        <option value="Amway"></option>
-        <option value="Bissel"></option>
-        <option value="Faurecia"></option>
-        <option value="Steelcase"></option>
-        <option value="Whirlpool"></option>
-        <option value="Wakestream"></option>
-        <option value="Trinity"></option>
-        <option value="Emergent"></option>
-        <option value="Priority"></option>
-    </datalist></div> -->
-
     <div><label for="themes">THEMES</label>
     <input list="themes" name="themes" ngModel>
     <datalist id="themes">
@@ -71,71 +33,7 @@
         <option value="The Good Life"></option>
     </datalist></div>
 
-    <!-- <div><label for="technology_areas">TECHNOLOGY AREA</label>
-    <input list="technology_areas" name="technology_areas" ngModel>
-    <datalist id="technology_areas">
-        <option value="Advanced Materials"></option>
-        <option value="Business Process"></option>
-        <option value="Products"></option>
-        <option value="Robotics"></option>
-        <option value="Sensing"></option>
-        <option value="Software/AI"></option>
-    </datalist></div>
-
-    <div><label for="landscape">LANDSCAPE</label>
-    <input list="landscape" name="landscape" ngModel>
-    <datalist id="landscape">
-        <option value="Aging in place"></option>
-        <option value="Air quality"></option>
-        <option value="Automation and robotics"></option>
-        <option value="Clinic in a box"></option>
-        <option value="Good habits"></option>
-        <option value="Personalized wellness"></option>
-        <option value="Responsive spaces"></option>
-        <option value="Safe shared spaces"></option>
-        <option value="Wireless power"></option>
-    </datalist></div>
-
-    <div><label for="uniqueness">UNIQUENESS</label>
-    <input list="uniqueness" name="uniqueness" ngModel>
-    <datalist id="uniqueness">
-        <option value="1"></option>
-        <option value="2"></option>
-        <option value="3"></option>
-        <option value="4"></option>
-        <option value="5"></option>
-    </datalist></div>
-
-    <div><label for="team">TEAM</label>
-    <input list="team" name="team" ngModel>
-    <datalist id="team">
-        <option value="1"></option>
-        <option value="2"></option>
-        <option value="3"></option>
-        <option value="4"></option>
-        <option value="5"></option>
-    </datalist></div>
-
-    <div><label for="raised">RAISED</label>
-    <input list="raised" name="raised" ngModel>
-    <datalist id="raised">
-        <option value="less than 1 million"></option>
-        <option value="1-5 million"></option>
-        <option value="5-10 million"></option>
-        <option value="10-15 million"></option>
-        <option value="more than 15 million"></option>
-    </datalist></div>
-
-    <div><label for="stage">STAGE</label>
-    <input list="stage" name="stage" ngModel>
-    <datalist id="stage">
-        <option value="Pre-Seed"></option>
-        <option value="Seed"></option>
-        <option value="Series A"></option>
-        <option value="Series B+"></option>
-    </datalist></div> -->
-
     <div class="buttons"><button type="submit">Submit</button>
-    <button type="reset">Reset</button></div>
+    <button type="reset" class="reset">Reset</button></div>
 </form>
 </div>

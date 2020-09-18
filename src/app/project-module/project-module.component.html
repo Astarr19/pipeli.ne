@@ -1,7 +1,9 @@
 <app-filter (filtered)="filter($event)"></app-filter>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 <div class="pages">
-<button *ngIf="nextButton" (click)="nextPage()">Next Page</button>
-<button *ngIf="lastButton" (click)="lastPage()">Last Page</button>
+<button *ngIf="lastButton" (click)="lastPage()"><i class="material-icons md-48">keyboard_arrow_left</i>Last Page</button>
+<button *ngIf="nextButton" (click)="nextPage()"><i class="material-icons md-48">keyboard_arrow_right</i>Next Page</button>
 </div>
 
 <div class="container"> <!--Switch back to startups later-->
@@ -32,6 +34,21 @@
   </div>
            
     </div>
+    <div class="column">
+      <div class="field"><p>{{startup.fields["Two Line Company Summary"]}}</p></div>
+      <div class="uniqueness field">  
+          <h4>Uniqueness:</h4>
+          <p>{{startup.fields["Uniqueness"]}}/5</p> 
+      </div>
+      <div class="team field">
+          <h4>Team:</h4>
+          <p>{{startup.fields["Team"]}}</p>
+      </div>
+      <div class="raised field"> 
+          <h4>Capital Raised:</h4>
+          <p>${{startup.fields["Raised"]}}</p>
+      </div>  
+  </div>
   </div>
   <app-project-detail [index]="[i]" [startups]="startups"></app-project-detail>
 </li>
