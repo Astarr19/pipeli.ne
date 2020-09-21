@@ -12,39 +12,44 @@ export class ProjectModuleComponent implements OnInit {
   constructor(private api:ApiResponseService) { }
   
   startups: Startup[];
-  filteredStartups: Startup[];
   selected: string;
+  formStatus: boolean = true;
+  nextButton: boolean = true;
+  lastButton: boolean = false;
+  index: number = 0;
+  offsetArr: string[] = [''];
   filters: string;
 
   ngOnInit(): void {
     //Populates the page with all startups
-    this.api.getStartups().subscribe((response: ProjectData) => {
+    this.api.getStartups(this.offsetArr[0]).subscribe((response: ProjectData) => {
+      this.offsetArr.push(response.offset);
       this.startups = response.records;
       this.fixAlignment(this.startups);
     })
   }
 
-  // nextPage() {
-  //   this.index++;
-  //   this.api.getStartups(this.offsetArr[this.index], this.filters).subscribe((response:ProjectData) => {
-  //     if ((this.index + 1) >= this.offsetArr.length) {
-  //       if (response.offset !== undefined) {
-  //         this.offsetArr.push(response.offset);
-  //       } else {
-  //         this.offsetArr.push(null);
-  //       }
-  //     }
-  //     if (this.offsetArr[this.index + 1] === null) {
-  //       this.nextButton = false;
-  //     }
-  //     this.lastButton = true;
-  //     this.startups = response.records;
-  //     this.fixAlignment(this.startups);
-  //   // this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
-  //   //   console.log(response)
-  //   //   this.startups = response.records
-  //   })
-  // }
+  nextPage() {
+    this.index++;
+    this.api.getStartups(this.offsetArr[this.index], this.filters).subscribe((response:ProjectData) => {
+      if ((this.index + 1) >= this.offsetArr.length) {
+        if (response.offset !== undefined) {
+          this.offsetArr.push(response.offset);
+        } else {
+          this.offsetArr.push(null);
+        }
+      }
+      if (this.offsetArr[this.index + 1] === null) {
+        this.nextButton = false;
+      }
+      this.lastButton = true;
+      this.startups = response.records;
+      this.fixAlignment(this.startups);
+    // this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
+    //   console.log(response)
+    //   this.startups = response.records
+    })
+  }
 
   fixAlignment(startups: Project[]) {
     startups.forEach((startup: Project)=>{
@@ -56,8 +61,8 @@ export class ProjectModuleComponent implements OnInit {
     })
   }
 
-  getStartups(): void {
-    this.api.getStartups().subscribe((response: ProjectData) => {
+  getstartups(): void {
+    this.api.getStartups(this.offsetArr[this.index]).subscribe((response: ProjectData) => {
       console.log(response)
       this.startups = response.records
     })
@@ -78,29 +83,49 @@ export class ProjectModuleComponent implements OnInit {
 
   getId(index: number) {
     //Grabs the id of startup
-    this.api.getStartups().subscribe((response: StartupData) => {
+    this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
       this.selected = response.records[index].id;
       console.log(this.selected)
       return this.selected;
     })
   }
 
-  // lastPage() {
-  //   if (this.index - 1 === 0) {
-  //     this.lastButton = false;
-  //   }
-  //   this.index--;
-  //   this.nextButton = true;
-  //   this.api.getStartups(this.offsetArr[this.index], this.filters).subscribe((response:ProjectData) => {
-  //     this.startups = response.records;
-  //     this.fixAlignment(this.startups);
-  //   })
-  // }
+  lastPage() {
+    if (this.index - 1 === 0) {
+      this.lastButton = false;
+    }
+    this.index--;
+    this.nextButton = true;
+    this.api.getStartups(this.offsetArr[this.index], this.filters).subscribe((response:ProjectData) => {
+      this.startups = response.records;
+      this.fixAlignment(this.startups);
+    })
+  }
 
   filter(obj: object) {
-    this.filteredStartups = this.startups.filter((el)=>{
-      return el.fields["Company Name"].includes(obj["name"]);
+    let str = '';
+    if (obj["city"]) {
+      str += encodeURI(`{city}='${obj["city"]}'`);
+    }
+    if (obj["country"]) {
+      if (str !== '') {
+        str += '&';
+      }
+      str += encodeURI(`{country}='${obj["country"]}'`);
+    }
+    if (obj["themes"]) {
+      if (str !== '') {
+        str += '&';
+      }
+      str += encodeURI(`{theme(s)}='${obj["themes"]}'`);
+    }
+    this.filters = str;
+    this.offsetArr = [''];
+    this.index = 0;
+    this.api.getStartups(this.offsetArr[this.index], str).subscribe((response: ProjectData) => {
+      this.offsetArr.push(response.offset);
+      this.startups = response.records;
     })
-    console.log(this.filteredStartups)
+    this.fixAlignment(this.startups);
   }
 };

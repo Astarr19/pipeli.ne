@@ -32,3 +32,9 @@ p {
   padding: 0;
 }
 
+button
+{
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}

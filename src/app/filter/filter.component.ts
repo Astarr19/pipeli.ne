@@ -35,7 +35,6 @@ export class FilterComponent implements OnInit {
       // raised: f.value["raised"],
       // stage: f.value["stage"]
     };
-    console.log(obj);
     this.filtered.emit(obj);
   }
 }

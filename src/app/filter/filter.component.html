@@ -1,3 +1,4 @@
+<div class="container">
 <form #f="ngForm" (submit)="submit(f)">
     <div><label for="name">NAME</label>
     <input type="text" id="name" name="name" ngModel></div>
@@ -24,9 +25,6 @@
 
     <div><label for="city">CITY</label>
     <input type="text" id="city" name="city" ngModel></div>
-
-    <!-- <div><label for="state_province">STATE/PROVINCE</label>
-    <input type="text" id="state_province" name="state_province" ngModel></div> -->
 
     <div><label for="country">COUNTRY</label>
     <input list="country" name="country" ngModel>
@@ -77,70 +75,7 @@
     <label for="life">The Good Life</label>
     <input type="checkbox" id="themes" name="life" value="The Good Life" ngModel>
 
-    <!-- <div><label for="technology_areas">TECHNOLOGY AREA</label>
-    <input list="technology_areas" name="technology_areas" ngModel>
-    <datalist id="technology_areas">
-        <option value="Advanced Materials"></option>
-        <option value="Business Process"></option>
-        <option value="Products"></option>
-        <option value="Robotics"></option>
-        <option value="Sensing"></option>
-        <option value="Software/AI"></option>
-    </datalist></div>
-
-    <div><label for="landscape">LANDSCAPE</label>
-    <input list="landscape" name="landscape" ngModel>
-    <datalist id="landscape">
-        <option value="Aging in place"></option>
-        <option value="Air quality"></option>
-        <option value="Automation and robotics"></option>
-        <option value="Clinic in a box"></option>
-        <option value="Good habits"></option>
-        <option value="Personalized wellness"></option>
-        <option value="Responsive spaces"></option>
-        <option value="Safe shared spaces"></option>
-        <option value="Wireless power"></option>
-    </datalist></div>
-
-    <div><label for="uniqueness">UNIQUENESS</label>
-    <input list="uniqueness" name="uniqueness" ngModel>
-    <datalist id="uniqueness">
-        <option value="1"></option>
-        <option value="2"></option>
-        <option value="3"></option>
-        <option value="4"></option>
-        <option value="5"></option>
-    </datalist></div>
-
-    <div><label for="team">TEAM</label>
-    <input list="team" name="team" ngModel>
-    <datalist id="team">
-        <option value="1"></option>
-        <option value="2"></option>
-        <option value="3"></option>
-        <option value="4"></option>
-        <option value="5"></option>
-    </datalist></div>
-
-    <div><label for="raised">RAISED</label>
-    <input list="raised" name="raised" ngModel>
-    <datalist id="raised">
-        <option value="less than 1 million"></option>
-        <option value="1-5 million"></option>
-        <option value="5-10 million"></option>
-        <option value="10-15 million"></option>
-        <option value="more than 15 million"></option>
-    </datalist></div>
-
-    <div><label for="stage">STAGE</label>
-    <input list="stage" name="stage" ngModel>
-    <datalist id="stage">
-        <option value="Pre-Seed"></option>
-        <option value="Seed"></option>
-        <option value="Series A"></option>
-        <option value="Series B+"></option>
-    </datalist></div> -->
-
-    <div><button type="submit">Submit</button>
-    <button type="reset">Reset</button></div>
+    <div class="buttons"><button type="submit"><i class="material-icons md-48">check</i>Submit</button>
+    <button type="reset" class="reset"><i class="material-icons md-48">undo</i>Reset</button></div>
 </form>
+</div>
