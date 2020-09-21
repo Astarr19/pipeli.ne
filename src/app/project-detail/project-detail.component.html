@@ -25,15 +25,35 @@
           <!-- Project Lead, Status Schedule, First Engagement End Date, ?Post Engagement Maturity Score, ?"Parnters Interested in Secondary Engagement", ?Type of Engagement,  ?Post-Engagement Seamless Investment -->
             <div class = "project-lead">
               <p>Project Lead:</p>&nbsp;
-              <p>{{ project.fields["Project Lead"]</p>
+              <p>{{ project.fields["Project Lead"] }}</p>
             </div>
             <div class = "status-schedule">
               <p>Statuses:</p>&nbsp;
-              <p>{{ project.fields["Status Schedule"]</p>
+              <p>{{ project.fields["Status Schedule"] }}</p>
+            </div>
+            <div class = "first-engagement">
+              <p>First Engagement:</p>&nbsp;
+              <p>{{ project.fields["First Engagement End Date"] }}</p>
+            </div>
+            <div *ngIf="found" class = "maturity-score">
+              <p>Post-Engagement Maturity Score:</p>&nbsp;
+              <p>{{ project.fields["Post Engagement Maturity Score"] }}</p>
+            </div>
+            <div *ngIf="found" class = "interested-partners">
+              <p>Partners Interested:</p>&nbsp;
+              <p>{{ project.fields["Parnters Interested in Secondary Engagement"] }}</p>
+            </div>
+            <div *ngIf="found" class = "engagement-type">
+              <p>Engagement TypeL</p>&nbsp;
+              <p>{{ project.fields["Type of Engagement"] }}</p>
+            </div>
+            <div *ngIf="found" class = "seamless-investment">
+              <p>Seamless Investment:</p>&nbsp;
+              <p>${{ project.fields["Post-Engagement Seamless Investment"] }}</p>
             </div>
         </div>
       </div>
-      <h2 *ngIf="noProjects">This startup has no current projects.</h2>
+      <h2 *ngIf="notFound">This startup has no current projects.</h2>
      
     </li>
     

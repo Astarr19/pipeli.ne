@@ -14,6 +14,7 @@ export class ProjectDetailComponent implements OnInit {
   company: string;
   projects: Project[];
   noProjects: boolean = false;
+  found: boolean = true;
   startupFilter: {["Startup Engaged"]};
 
   constructor(private api:ApiResponseService) { }
@@ -31,6 +32,11 @@ export class ProjectDetailComponent implements OnInit {
       if (this.projects === undefined) {
         this.noProjects = true;
       }
+      //form coding
+        if (this.projects["fields"].id !== undefined) {
+          this.found = true;}
+        //if object property for a specific field is not found, then hide using *ngIf on html file
+        
     })
   }
 
