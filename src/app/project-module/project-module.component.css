@@ -49,6 +49,9 @@ li
 p, h4{
   margin: 0;
   padding: 0;
+
+  display: flex;
+  align-items: center;
 }
 
 /* test for two-column view */

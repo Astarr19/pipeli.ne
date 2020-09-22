@@ -127,5 +127,7 @@ export class ProjectModuleComponent implements OnInit {
       this.startups = response.records;
     })
   }
+
+
 };
 
