@@ -33,6 +33,7 @@ export class ApiResponseService {
       return this.http.get(`${this.apiUrl}/${this.projectList}?filterByFormula=${name}`);
   } 
 
+  //not being used, to be deleted eventually
   updateProject(id, item) {
     return this.http.put(`${this.apiUrl}/${id}`, {fields: item}, {responseType: "json"})
   }
