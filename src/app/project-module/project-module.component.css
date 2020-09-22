@@ -49,6 +49,9 @@ li
 p, h4{
   margin: 0;
   padding: 0;
+
+  display: flex;
+  align-items: center;
 }
 
 /* test for two-column view */
@@ -71,5 +74,9 @@ button
 {
     display: flex;
     align-items: center;
-    padding-left: 20px;
+}
+
+.link a
+{
+    text-decoration: underline; 
 }

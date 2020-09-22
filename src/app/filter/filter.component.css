@@ -22,6 +22,9 @@
   label
   {
     margin-top: 30px;
+
+    display: flex;
+    align-items: center;
   }
   
   input {
@@ -79,6 +82,8 @@
 
   button {
     width: 150px;
+    display: flex;
+    align-items: center;
   }
 
   .buttons {

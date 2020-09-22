@@ -23,6 +23,7 @@
     "cors": "^2.8.5",
     "country-flag-icons": "^1.2.5",
     "express": "^4.17.1",
+    "form": "^0.2.4",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

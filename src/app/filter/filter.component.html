@@ -1,10 +1,10 @@
 <div class="container">
 <form #f="ngForm" (submit)="submit(f)">
 
-    <div><label for="city">CITY</label>
+    <div><label for="city"><i class="material-icons md-48">location_city</i>&nbsp;CITY</label>
     <input type="text" id="city" name="city" ngModel></div>
 
-    <div><label for="country">COUNTRY</label>
+    <div><label for="country"><i class="material-icons md-48">flag</i>&nbsp;COUNTRY</label>
     <input list="country" name="country" ngModel>
     <datalist id="country">
         <option value="Australia"></option>
@@ -25,7 +25,7 @@
         <option value="USA"></option>
     </datalist></div>
 
-    <div><label for="themes">THEMES</label>
+    <div><label for="themes"><i class="material-icons md-48">layers</i>&nbsp;THEMES</label>
     <input list="themes" name="themes" ngModel>
     <datalist id="themes">
         <option value="Health Beyond the Hospital"></option>
