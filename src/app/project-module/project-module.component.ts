@@ -1,3 +1,4 @@
+import { splitAtPeriod } from '@angular/compiler/src/util';
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiResponseService } from '../api-response.service';
 import { ProjectData, Project, Startup, StartupData } from '../project-data';
@@ -57,6 +58,18 @@ export class ProjectModuleComponent implements OnInit {
         startup.fields["Alignment"] = startup.fields["Alignment"].split(",").map((Alignment)=>{
           return Alignment.trim();
         }).join(", ")
+      }
+
+      if (startup.fields["Uniqueness"] == '5') {
+        startup.fields["Uniqueness"] = '★★★★★';
+      } else if(startup.fields["Uniqueness"] == '4') {
+        startup.fields["Uniqueness"] = '★★★★☆';
+      } else if(startup.fields["Uniqueness"] == '3') {
+        startup.fields["Uniqueness"] = '★★★☆☆';
+      } else if(startup.fields["Uniqueness"] == '2') {
+        startup.fields["Uniqueness"] = '★★☆☆☆';
+      } else if(startup.fields["Uniqueness"] == '1') {
+        startup.fields["Uniqueness"] = '★☆☆☆☆';
       }
     })
   }
@@ -131,3 +144,8 @@ export class ProjectModuleComponent implements OnInit {
 
 };
 
+class MyComponent {
+    getHtmlContent(i) {
+      alert(i.innerHTML)
+    }
+  }

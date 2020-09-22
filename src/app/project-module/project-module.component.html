@@ -40,8 +40,7 @@
       <div class="field"><p>{{startup.fields["Two Line Company Summary"]}}</p></div>
       <div class="uniqueness field">  
           <h4><i class="material-icons md-48">military_tech</i>Uniqueness:</h4>
-          <p>{{startup.fields["Uniqueness"]}}</p>
-          
+          <p class="stars">{{startup.fields["Uniqueness"]}}</p>
       </div>
       <div class="team field">
           <h4><i class="material-icons md-48">group</i>Team:</h4>
@@ -55,18 +54,4 @@
   </div>
   <app-project-detail [index]="[i]" [startups]="startups"></app-project-detail>
 </li>
-</div>  
-<!-- Button to toggle project view --> 
-
-<!-- project view of startup, for test purposes -->
-<!-- <div class="project-view">
-  <h4>Project View</h4>
-  <li *ngFor="let project of projects, index as i">
-    <h1>{{project.fields["Project Name"]}}</h1>
-    <p>{{project.fields["Project Summary"]}}</p>
-  </li>
-</div>   -->
-
-
-
-
+</div>

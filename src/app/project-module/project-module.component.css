@@ -54,6 +54,11 @@ p, h4{
   align-items: center;
 }
 
+.stars
+{
+    font-size: 1.5em;
+}
+
 /* test for two-column view */
 .row {
   display: flex;
