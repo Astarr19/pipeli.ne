@@ -17,10 +17,13 @@
             <p>Engagement Progress:</p>&nbsp;
             <p>{{ project.fields["Engagement Progress"] }}</p>
           </div>
-          <div class = "ongoing-status">
+          <div *ngIf="found.ongoingStatus; else noOngoingStatus" class = "ongoing-status">
             <p>Ongoing Status:</p>&nbsp;
             <p>{{ project.fields["Ongoing Status"] }}</p>
           </div>
+          <ng-template #noOngoingStatus>
+            <p>Ongoing Status: No ongoing status found.
+          </ng-template>
         </div>
         <div class = "column">
           <!-- Project Lead, Status Schedule, First Engagement End Date, ?Post Engagement Maturity Score, ?"Parnters Interested in Secondary Engagement", ?Type of Engagement,  ?Post-Engagement Seamless Investment -->
