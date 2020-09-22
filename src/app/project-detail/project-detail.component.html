@@ -2,6 +2,8 @@
     <!-- When this button fires it displays the projects attached to the startup -->
     <button (click)="getProjects(company)">More details</button>
     <li *ngFor="let project of projects, index as i">
+      <h2 *ngIf="noProjects">Startup has no projects currently active.</h2>
+      <!-- Put active project data (i.e. everything beyond Project Name and Summary) into its own div that only shows on *ngIf !noProjects -->
       <h2>{{ project.fields["Project Name"] }}</h2>
       <div class ="row">
         <div class="column">
@@ -35,7 +37,7 @@
               <p>First Engagement:</p>&nbsp;
               <p>{{ project.fields["First Engagement End Date"] }}</p>
             </div>
-            <div *ngIf="found" class = "maturity-score">
+            <div *ngIf="maturityScoreFound" class = "maturity-score">
               <p>Post-Engagement Maturity Score:</p>&nbsp;
               <p>{{ project.fields["Post Engagement Maturity Score"] }}</p>
             </div>

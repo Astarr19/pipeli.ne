@@ -14,7 +14,8 @@ export class ProjectDetailComponent implements OnInit {
   company: string;
   projects: Project[];
   noProjects: boolean = false;
-  found: boolean = true;
+  maturityScoreFound: boolean = true;
+  blank: boolean = true;
   startupFilter: {["Startup Engaged"]};
 
   constructor(private api:ApiResponseService) { }
@@ -33,11 +34,16 @@ export class ProjectDetailComponent implements OnInit {
         this.noProjects = true;
       }
       //form coding
-        if (this.projects["fields"].id !== undefined) {
-          this.found = true;}
+      //this points to a column in the projects array
+        if (this.projects["Post Engagement Maturity Score"] !== undefined) {
+          this.maturityScoreFound = true;}
+          console.log("maturity score found");
         //if object property for a specific field is not found, then hide using *ngIf on html file
         
     })
   }
+  
 
 }
+
+
