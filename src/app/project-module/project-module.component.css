@@ -85,3 +85,27 @@ button
 {
     text-decoration: underline; 
 }
+
+@media only screen and (max-width: 600px) {
+    .row {
+        flex-flow: column nowrap;
+    }
+
+    .column {
+        width: 99%;
+    }
+}
+
+@media only screen and (min-width: 1447px) {
+    .container {
+        justify-content: space-around;
+        flex-flow: row wrap;
+        background-color: lightgrey;
+    
+    }
+    
+    .startup {
+      width: 500px;
+      background-color: white;
+    }
+}
