@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiResponseService } from '../api-response.service';
-import { ProjectData, Project, StartupData, Startup } from '../project-data';
+import { ProjectData, Project, FoundObj, Startup } from '../project-data';
 
 @Component({
   selector: 'app-project-detail',
@@ -14,8 +14,21 @@ export class ProjectDetailComponent implements OnInit {
   company: string;
   projects: Project[];
   noProjects: boolean = false;
-  maturityScoreFound: boolean = true;
-  blank: boolean = true;
+
+  //this sets project data fields to not display if the Airtable cell has no input
+  //default is set to "false"
+  found: FoundObj = {
+    projectLead: false,
+    maturityScore: false,
+    ongoingStatus: false,
+    statusSchedule: false,
+    firstEngagement: false,
+    interestedPartners: false,
+    engagementType: false,
+    seamlessInvestment: false
+  }
+  
+  
   startupFilter: {["Startup Engaged"]};
 
   constructor(private api:ApiResponseService) { }
@@ -33,13 +46,6 @@ export class ProjectDetailComponent implements OnInit {
       if (this.projects === undefined) {
         this.noProjects = true;
       }
-      //form coding
-      //this points to a column in the projects array
-        if (this.projects["Post Engagement Maturity Score"] !== undefined) {
-          this.maturityScoreFound = true;}
-          console.log("maturity score found");
-        //if object property for a specific field is not found, then hide using *ngIf on html file
-        
     })
   }
   
