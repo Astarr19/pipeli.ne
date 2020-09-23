@@ -46,9 +46,6 @@ export class ProjectModuleComponent implements OnInit {
       this.lastButton = true;
       this.startups = response.records;
       this.fixAlignment(this.startups);
-    // this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
-    //   console.log(response)
-    //   this.startups = response.records
     })
   }
 
@@ -80,19 +77,6 @@ export class ProjectModuleComponent implements OnInit {
       this.startups = response.records
     })
   }
-
-  //filter method for filtering project list by startup name
-  //https://stackoverflow.com/questions/50591939/angular-how-to-filter-ngfor-to-specific-object-property-data
-  //  filterstartups(): void {
-  //    this.filteredValues = values.filter(project => project.category === 'Startup Engaged');
-  // getStartups(): void {
-  //   this.api.getStartups(this.offsetArr[this.index]).subscribe((response: ProjectData) => {
-  //     console.log(response)
-  //     this.startups = response.records
-  //   })
-  // }
-
-  
 
   getId(index: number) {
     //Grabs the id of startup

@@ -6,7 +6,7 @@
 <button *ngIf="nextButton" (click)="nextPage()">Next Page<i class="material-icons md-48">keyboard_arrow_right</i></button>
 </div>
 
-<div class="container"> <!--Switch back to startups later-->
+<div class="container">
 <li class="startup" *ngFor="let startup of startups; index as i">
   <h1>{{startup.fields["Company Name"]}}</h1>
   <div class="row">
