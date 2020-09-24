@@ -75,7 +75,7 @@ export class ProjectModuleComponent implements OnInit {
       console.log(response)
       this.startups = response.records
     })
-  }  
+  }
 
   lastPage() {
     if (this.index - 1 === 0) {
@@ -117,7 +117,6 @@ export class ProjectModuleComponent implements OnInit {
       and++;
     } if (and > 1) {
       str = `AND(${str})`
-      str += `FIND('${obj["alignment"]}', {Alignment})`
     }
     this.filters = encodeURI(str);
     this.offsetArr = [''];
@@ -130,5 +129,4 @@ export class ProjectModuleComponent implements OnInit {
       this.fixDisplay(this.startups, "Theme(s)");
     })
   }
-
-}
+};
