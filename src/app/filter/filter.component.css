@@ -66,6 +66,10 @@
     outline: none;
   }
 
+  .checkbox {
+    flex-direction: row;
+  }
+
   .container {
     display: flex;
     /* background-color: #477C80; */

@@ -2,7 +2,6 @@ import { splitAtPeriod } from '@angular/compiler/src/util';
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiResponseService } from '../api-response.service';
 import { ProjectData, Project, Startup, StartupData } from '../project-data';
-
 @Component({
   selector: 'app-project-module',
   templateUrl: './project-module.component.html',
