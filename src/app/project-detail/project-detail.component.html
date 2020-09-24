@@ -3,6 +3,7 @@
     <button (click)="getProjects(company)"><i class="material-icons md-48">unfold_more</i>More details</button>
     <li *ngFor="let project of projects, index as i" >
       <!-- *ngIf="!noProjects; else #inactiveProject" -->
+
       <h2>{{ project.fields["Project Name"] }}</h2>
       <div class ="row">
         <div class="column">
@@ -70,3 +71,4 @@
     </li>
     
     </div>  
+

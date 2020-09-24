@@ -10,21 +10,23 @@ import { ProjectData, Project, Startup, StartupData } from '../project-data';
 export class ProjectModuleComponent implements OnInit {
   constructor(private api:ApiResponseService) { }
   startups: Startup[];
-  selected: string;
-  formStatus: boolean = true;
   nextButton: boolean = true;
   lastButton: boolean = false;
   index: number = 0;
   offsetArr: string[] = [''];
   filters: string;
+
   ngOnInit(): void {
     //Populates the page with all startups
-    this.api.getStartups(this.offsetArr[0]).subscribe((response: StartupData) => {
+
+    this.api.getStartups(this.offsetArr[this.index]).subscribe((response: ProjectData) => {
       this.offsetArr.push(response.offset);
       this.startups = response.records;
-      this.fixAlignment(this.startups);
+      this.fixDisplay(this.startups, "Alignment");
+      this.fixDisplay(this.startups, "Theme(s)");
     })
   }
+
   nextPage() {
     this.index++;
     this.api.getStartups(this.offsetArr[this.index], this.filters).subscribe((response:StartupData) => {
@@ -40,13 +42,16 @@ export class ProjectModuleComponent implements OnInit {
       }
       this.lastButton = true;
       this.startups = response.records;
-      this.fixAlignment(this.startups);
+
+      this.fixDisplay(this.startups, "Alignment");
+      this.fixDisplay(this.startups, "Theme(s)");
     })
   }
-  fixAlignment(startups: Project[]) {
+
+  fixDisplay(startups: Project[], field: string) {
     startups.forEach((startup: Project)=>{
-      if (startup.fields["Alignment"]) {
-        startup.fields["Alignment"] = startup.fields["Alignment"].split(",").map((Alignment)=>{
+      if (startup.fields[field]) {
+        startup.fields[field] = startup.fields[field].split(",").map((Alignment)=>{
           return Alignment.trim();
         }).join(", ")
       }
@@ -64,21 +69,13 @@ export class ProjectModuleComponent implements OnInit {
       }
     })
   }
-  getstartups(): void {
+  getStartups(): void {
     this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
       console.log(response)
       this.startups = response.records
     })
   }
 
-  getId(index: number) {
-    //Grabs the id of startup
-    this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
-      this.selected = response.records[index].id;
-      console.log(this.selected)
-      return this.selected;
-    })
-  }
   lastPage() {
     if (this.index - 1 === 0) {
       this.lastButton = false;
@@ -87,30 +84,38 @@ export class ProjectModuleComponent implements OnInit {
     this.nextButton = true;
     this.api.getStartups(this.offsetArr[this.index], this.filters).subscribe((response:ProjectData) => {
       this.startups = response.records;
-      this.fixAlignment(this.startups);
+      this.fixDisplay(this.startups, "Alignment");
+      this.fixDisplay(this.startups, "Theme(s)");
     })
   }
   filter(obj: object) {
     let str = '';
+    let and = 0;
     if (obj["name"]) {
       str += `FIND('${obj["name"]}', {Company Name})`;
+      and++;
     }
     if (obj["city"]) {
       if (str !== '') {
-        str += '&';
+        str += ', ';
       }
       str += `FIND('${obj["city"]}', {City})`;
+      and++;
     }
     if (obj["country"]) {
       if (str !== '') {
-        str += '&';
+        str += ', ';
       }
       str += `FIND('${obj["country"]}', {Country})`;
+      and++;
     } if (obj["alignment"]) {
       if (str !== '') {
-        str += '&';
+        str += ', ';
       }
-      str += `FIND('${obj["alignment"]}', {Alignment})`
+      str += `FIND('${obj["alignment"]}', {Alignment})`;
+      and++;
+    } if (and > 1) {
+      str = `AND(${str})`
     }
     this.filters = encodeURI(str);
     this.offsetArr = [''];
@@ -119,9 +124,8 @@ export class ProjectModuleComponent implements OnInit {
       console.log(str);
       this.offsetArr.push(response.offset);
       this.startups = response.records;
-      this.fixAlignment(this.startups);
+      this.fixDisplay(this.startups, "Alignment");
+      this.fixDisplay(this.startups, "Theme(s)");
     })
   }
-
-
 };
