@@ -1,25 +1,23 @@
+import { splitAtPeriod } from '@angular/compiler/src/util';
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiResponseService } from '../api-response.service';
 import { ProjectData, Project, Startup, StartupData } from '../project-data';
-
 @Component({
   selector: 'app-project-module',
   templateUrl: './project-module.component.html',
   styleUrls: ['./project-module.component.css']
 })
 export class ProjectModuleComponent implements OnInit {
-
   constructor(private api:ApiResponseService) { }
-  
   startups: Startup[];
   nextButton: boolean = true;
   lastButton: boolean = false;
   index: number = 0;
   offsetArr: string[] = [''];
   filters: string;
-
   ngOnInit(): void {
     //Populates the page with all startups
+
     this.api.getStartups(this.offsetArr[this.index]).subscribe((response: ProjectData) => {
       this.offsetArr.push(response.offset);
       this.startups = response.records;
@@ -27,10 +25,9 @@ export class ProjectModuleComponent implements OnInit {
       this.fixDisplay(this.startups, "Theme(s)");
     })
   }
-
   nextPage() {
     this.index++;
-    this.api.getStartups(this.offsetArr[this.index], this.filters).subscribe((response:ProjectData) => {
+    this.api.getStartups(this.offsetArr[this.index], this.filters).subscribe((response:StartupData) => {
       if ((this.index + 1) >= this.offsetArr.length) {
         if (response.offset !== undefined) {
           this.offsetArr.push(response.offset);
@@ -43,6 +40,7 @@ export class ProjectModuleComponent implements OnInit {
       }
       this.lastButton = true;
       this.startups = response.records;
+
       this.fixDisplay(this.startups, "Alignment");
       this.fixDisplay(this.startups, "Theme(s)");
     })
@@ -55,16 +53,25 @@ export class ProjectModuleComponent implements OnInit {
           return Alignment.trim();
         }).join(", ")
       }
+
+      if (startup.fields["Uniqueness"] == '5') {
+        startup.fields["Uniqueness"] = '★★★★★';
+      } else if(startup.fields["Uniqueness"] == '4') {
+        startup.fields["Uniqueness"] = '★★★★☆';
+      } else if(startup.fields["Uniqueness"] == '3') {
+        startup.fields["Uniqueness"] = '★★★☆☆';
+      } else if(startup.fields["Uniqueness"] == '2') {
+        startup.fields["Uniqueness"] = '★★☆☆☆';
+      } else if(startup.fields["Uniqueness"] == '1') {
+        startup.fields["Uniqueness"] = '★☆☆☆☆';
+      }
     })
   }
-
   getstartups(): void {
-    this.api.getStartups(this.offsetArr[this.index]).subscribe((response: ProjectData) => {
+    this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
       console.log(response)
       this.startups = response.records
     })
-  }  
-
   lastPage() {
     if (this.index - 1 === 0) {
       this.lastButton = false;
@@ -77,7 +84,6 @@ export class ProjectModuleComponent implements OnInit {
       this.fixDisplay(this.startups, "Theme(s)");
     })
   }
-
   filter(obj: object) {
     let str = '';
     let and = 0;
@@ -106,6 +112,7 @@ export class ProjectModuleComponent implements OnInit {
       and++;
     } if (and > 1) {
       str = `AND(${str})`
+      str += `FIND('${obj["alignment"]}', {Alignment})`
     }
     this.filters = encodeURI(str);
     this.offsetArr = [''];
@@ -117,5 +124,4 @@ export class ProjectModuleComponent implements OnInit {
       this.fixDisplay(this.startups, "Alignment");
       this.fixDisplay(this.startups, "Theme(s)");
     })
-  }
-};
+  };

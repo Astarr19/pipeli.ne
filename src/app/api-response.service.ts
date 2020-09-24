@@ -9,9 +9,10 @@ export class ApiResponseService {
   apiUrl: string = 'https://scgcairtable.herokuapp.com';
   masterList: string = 'master-list'
   projectList: string = 'projects'
-  pageSize: string = 'pageSize=5'
+  pageSize: string = 'pageSize=20'
+   
   //get all function for getting list of all startups in project-module component
-  //change getProjects to getStartups?
+
   getStartups(offset: string, filters?: string) {
     if (filters && offset){
       filters = "filterByFormula=" + filters;

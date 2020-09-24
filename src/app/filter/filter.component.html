@@ -3,10 +3,10 @@
     <div><label for="name">NAME</label>
     <input type="text" id="name" name="name" ngModel></div>
 
-    <div><label for="city">CITY</label>
+    <div><label for="city"><i class="material-icons md-48">location_city</i>&nbsp;CITY</label>
     <input type="text" id="city" name="city" ngModel></div>
 
-    <div><label for="country">COUNTRY</label>
+    <div><label for="country"><i class="material-icons md-48">flag</i>&nbsp;COUNTRY</label>
     <input list="country" name="country" ngModel>
     <datalist id="country">
         <option value="Australia"></option>
@@ -40,6 +40,7 @@
         <option value="Emergent"></option>
         <option value="Priority"></option>
     </datalist></div>
+
 
     <div class="buttons"><button type="submit"><i class="material-icons md-48">check</i>Submit</button>
     <button type="reset" class="reset"><i class="material-icons md-48">undo</i>Reset</button></div>

@@ -1,7 +1,9 @@
 <div class="container">
     <!-- When this button fires it displays the projects attached to the startup -->
     <button (click)="getProjects(company)">More details</button>
-    <li *ngFor="let project of projects, index as i">
+    <li *ngFor="let project of projects, index as i" >
+      <!-- *ngIf="!noProjects; else #inactiveProject" -->
+
       <h2>{{ project.fields["Project Name"] }}</h2>
       <div class ="row">
         <div class="column">
@@ -16,21 +18,55 @@
             <p>Engagement Progress:</p>&nbsp;
             <p>{{ project.fields["Engagement Progress"] }}</p>
           </div>
-          <div class = "ongoing-status">
+          <div *ngIf="found.ongoingStatus; else noOngoingStatus" class = "ongoing-status">
             <p>Ongoing Status:</p>&nbsp;
             <p>{{ project.fields["Ongoing Status"] }}</p>
           </div>
+          <ng-template #noOngoingStatus>
+            <p>Ongoing Status: No ongoing status found.
+          </ng-template>
         </div>
         <div class = "column">
           <!-- Project Lead, Status Schedule, First Engagement End Date, ?Post Engagement Maturity Score, ?"Parnters Interested in Secondary Engagement", ?Type of Engagement,  ?Post-Engagement Seamless Investment -->
-            <div class = "project-lead">
+            <div *ngIf="found.projectLead; else noProjectLead" class = "project-lead">
               <p>Project Lead:</p>&nbsp;
-              <p>{{ project.fields["Project Lead"]</p>
+              <p>{{ project.fields["Project Lead"] }}</p>
             </div>
-            <div class = "status-schedule">
+            <ng-template #noProjectLead>
+              <p>Project Lead: No Project Lead currently assigned.
+            </ng-template>
+            <div *ngIf="found.statusSchedule" class = "status-schedule">
               <p>Statuses:</p>&nbsp;
-              <p>{{ project.fields["Status Schedule"]</p>
+              <p>{{ project.fields["Status Schedule"] }}</p>
+            </div>
+            <div *ngIf="found.firstEngagement" class = "first-engagement">
+              <p>First Engagement:</p>&nbsp;
+              <p>{{ project.fields["First Engagement End Date"] }}</p>
+            </div>
+            <div *ngIf="found.maturityScoreFound" class = "maturity-score">
+              <p>Post-Engagement Maturity Score:</p>&nbsp;
+              <p>{{ project.fields["Post Engagement Maturity Score"] }}</p>
+            </div>
+            <div *ngIf="found.partnersInterested" class = "partners-interested">
+              <p>Partners Interested:</p>&nbsp;
+              <p>{{ project.fields["Parnters Interested in Secondary Engagement"] }}</p>
+            </div>
+            <div *ngIf="found.engagementType" class = "engagement-type">
+              <p>Engagement Type</p>&nbsp;
+              <p>{{ project.fields["Type of Engagement"] }}</p>
+            </div>
+            <div *ngIf="found.seamlessInvestment" class = "seamless-investment">
+              <p>Seamless Investment:</p>&nbsp;
+              <p>${{ project.fields["Post-Engagement Seamless Investment"] }}</p>
             </div>
         </div>
       </div>
-      <h2 *ngIf="noProjects">This startup has no current projects.</h2>
+      <ng-template #inactiveProject>
+        <h3>This startup has no currently active projects.</h3>
+      </ng-template>
+  
+     
+    </li>
+    
+    </div>  
+
