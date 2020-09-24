@@ -3,23 +3,26 @@
     <button (click)="getProjects(company)"><i class="material-icons md-48">unfold_more</i>More details</button>
     <li *ngFor="let project of projects, index as i" >
       <h2>{{ project.fields["Project Name"] }}</h2>
+      <div class = "engagement-phase:">
+        <h4><i class="material-icons md-48">article</i>Project Summary:</h4>
+        <p>{{ project.fields["Project Summary"] }}</p>
+      </div>
       <div class ="row">
         <div class="column">
-          
           <div class = "engagement-phase:">
-            <h4>Engagement Phase:</h4>
+            <h4><i class="material-icons md-48">analytics</i>Engagement Phase:</h4>
             <p>{{ project.fields["Engagement Phase"] }}</p>
           </div>
           <div class = "engagement-progress">
-            <h4>Engagement Progress:</h4>
+            <h4><i class="material-icons md-48">account_tree</i>Engagement Progress:</h4>
             <p>{{ project.fields["Engagement Progress"] }}</p>
           </div>
           <div *ngIf="found.ongoingStatus; else noOngoingStatus" class = "ongoing-status">
-            <h4>Ongoing Status:</h4>
+            <h4><i class="material-icons md-48">help_outline</i>Ongoing Status:</h4>
             <p>{{ project.fields["Ongoing Status"] }}</p>
           </div>
           <ng-template #noOngoingStatus>
-            <h4>Ongoing Status:</h4>
+            <h4><i class="material-icons md-48">help_outline</i>Ongoing Status:</h4>
             <p>No ongoing status found.</p>
           </ng-template>
         </div>
@@ -30,7 +33,7 @@
               <p>{{ project.fields["Project Lead"] }}</p>
             </div>
             <ng-template #noProjectLead>
-              <h4>Project Lead:</h4>
+              <h4><i class="material-icons md-48">contact_page</i>Project Lead:</h4>
               <p>No Project Lead currently assigned.</p>
             </ng-template>
             <div *ngIf="found.statusSchedule" class = "status-schedule">
