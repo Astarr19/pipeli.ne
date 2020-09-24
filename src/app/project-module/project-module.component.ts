@@ -67,6 +67,18 @@ export class ProjectModuleComponent implements OnInit {
       } else if(startup.fields["Uniqueness"] == '1') {
         startup.fields["Uniqueness"] = '★☆☆☆☆';
       }
+
+      if (startup.fields["Team"] == '5') {
+        startup.fields["Team"] = '★★★★★';
+      } else if(startup.fields["Team"] == '4') {
+        startup.fields["Team"] = '★★★★☆';
+      } else if(startup.fields["Team"] == '3') {
+        startup.fields["Team"] = '★★★☆☆';
+      } else if(startup.fields["Team"] == '2') {
+        startup.fields["Team"] = '★★☆☆☆';
+      } else if(startup.fields["Team"] == '1') {
+        startup.fields["Team"] = '★☆☆☆☆';
+      }
     })
   }
   getStartups(): void {
