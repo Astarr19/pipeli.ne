@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiResponseService } from '../api-response.service';
 import { ProjectData, Project, FoundObj, Startup } from '../project-data';
@@ -43,13 +44,15 @@ export class ProjectDetailComponent implements OnInit {
     this.api.getProjects(company).subscribe((response: ProjectData) => {
       this.projects = response.records
       console.log(this.projects);
-      if (this.projects === undefined) {
+      if (this.projects.length === 0) {
         this.noProjects = true;
-      }
+        console.log("noProjects is true");
+      } 
     })
   }
 
   toggleDisplay() {
+    console.log("toggle");
     this.noProjects = !this.noProjects;    
   }
   
