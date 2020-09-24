@@ -84,3 +84,9 @@ footer {
   height: 50px;
   width: 50px;
 }
+
+.icon {
+  height:20px;
+  width:20px;
+  padding-right: 2px;
+}
