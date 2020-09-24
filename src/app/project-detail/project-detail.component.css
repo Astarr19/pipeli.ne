@@ -25,6 +25,7 @@ button
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
+    padding-left: 15px;
 }
 
 li
