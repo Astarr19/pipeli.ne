@@ -86,6 +86,7 @@ footer {
 }
 
 .icon {
+  align-content: center;
   height:20px;
   width:20px;
   padding-right: 2px;
