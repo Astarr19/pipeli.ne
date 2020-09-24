@@ -2,6 +2,7 @@ import { splitAtPeriod } from '@angular/compiler/src/util';
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiResponseService } from '../api-response.service';
 import { ProjectData, Project, Startup, StartupData } from '../project-data';
+
 @Component({
   selector: 'app-project-module',
   templateUrl: './project-module.component.html',
@@ -15,6 +16,7 @@ export class ProjectModuleComponent implements OnInit {
   index: number = 0;
   offsetArr: string[] = [''];
   filters: string;
+
   ngOnInit(): void {
     //Populates the page with all startups
 
@@ -25,6 +27,7 @@ export class ProjectModuleComponent implements OnInit {
       this.fixDisplay(this.startups, "Theme(s)");
     })
   }
+
   nextPage() {
     this.index++;
     this.api.getStartups(this.offsetArr[this.index], this.filters).subscribe((response:StartupData) => {
@@ -67,12 +70,16 @@ export class ProjectModuleComponent implements OnInit {
       }
     })
   }
-  getstartups(): void {
+  getStartups(): void {
     this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
       console.log(response)
       this.startups = response.records
     })
+<<<<<<< HEAD
   }
+=======
+  }  
+>>>>>>> ee0cec4a5749df2466620186fb22d8343b012667
 
   lastPage() {
     if (this.index - 1 === 0) {
@@ -126,4 +133,9 @@ export class ProjectModuleComponent implements OnInit {
       this.fixDisplay(this.startups, "Theme(s)");
     })
   }
+<<<<<<< HEAD
 };
+=======
+
+}
+>>>>>>> ee0cec4a5749df2466620186fb22d8343b012667
