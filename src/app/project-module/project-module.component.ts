@@ -1,3 +1,4 @@
+import { splitAtPeriod } from '@angular/compiler/src/util';
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiResponseService } from '../api-response.service';
 import { ProjectData, Project, Startup, StartupData } from '../project-data';
@@ -18,7 +19,7 @@ export class ProjectModuleComponent implements OnInit {
   filters: string;
   ngOnInit(): void {
     //Populates the page with all startups
-    this.api.getStartups(this.offsetArr[this.index]).subscribe((response: ProjectData) => {
+    this.api.getStartups(this.offsetArr[0]).subscribe((response: StartupData) => {
       this.offsetArr.push(response.offset);
       this.startups = response.records;
       this.fixAlignment(this.startups);
@@ -26,7 +27,7 @@ export class ProjectModuleComponent implements OnInit {
   }
   nextPage() {
     this.index++;
-    this.api.getStartups(this.offsetArr[this.index], this.filters).subscribe((response:ProjectData) => {
+    this.api.getStartups(this.offsetArr[this.index], this.filters).subscribe((response:StartupData) => {
       if ((this.index + 1) >= this.offsetArr.length) {
         if (response.offset !== undefined) {
           this.offsetArr.push(response.offset);
@@ -49,14 +50,27 @@ export class ProjectModuleComponent implements OnInit {
           return Alignment.trim();
         }).join(", ")
       }
+
+      if (startup.fields["Uniqueness"] == '5') {
+        startup.fields["Uniqueness"] = '★★★★★';
+      } else if(startup.fields["Uniqueness"] == '4') {
+        startup.fields["Uniqueness"] = '★★★★☆';
+      } else if(startup.fields["Uniqueness"] == '3') {
+        startup.fields["Uniqueness"] = '★★★☆☆';
+      } else if(startup.fields["Uniqueness"] == '2') {
+        startup.fields["Uniqueness"] = '★★☆☆☆';
+      } else if(startup.fields["Uniqueness"] == '1') {
+        startup.fields["Uniqueness"] = '★☆☆☆☆';
+      }
     })
   }
   getstartups(): void {
-    this.api.getStartups(this.offsetArr[this.index]).subscribe((response: ProjectData) => {
+    this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
       console.log(response)
       this.startups = response.records
     })
-  }  
+  }
+
   getId(index: number) {
     //Grabs the id of startup
     this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
@@ -108,4 +122,6 @@ export class ProjectModuleComponent implements OnInit {
       this.fixAlignment(this.startups);
     })
   }
+
+
 };

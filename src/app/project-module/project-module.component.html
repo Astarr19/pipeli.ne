@@ -6,7 +6,7 @@
 <button *ngIf="nextButton" (click)="nextPage()">Next Page<i class="material-icons md-48">keyboard_arrow_right</i></button>
 </div>
 
-<div class="container"> <!--Switch back to startups later-->
+<div class="container">
 <li class="startup" *ngFor="let startup of startups; index as i">
   <h1>{{startup.fields["Company Name"]}}</h1>
   <div class="row">
@@ -14,22 +14,24 @@
       <a href="https://www.seamlessiot.com">{{startup.fields["Company Website"]}}</a>
       <div class="field"><p>{{startup.fields["City"]}}, {{startup.fields["Country"]}}</p></div>git
     <div class="review-date field">   
-      <h4>Review Date:</h4>
+      <h4><i class="material-icons md-48">today</i>Review Date:</h4>
       <p>{{startup.fields["Review Date"]}}</p>
     </div>
     <div class="scout field">
-      <h4>Scout:</h4>
+      <h4><i class="material-icons md-48">perm_contact_calendar</i>Scout:</h4>
       <p>{{startup.fields["Scout"]}}</p>
-    </div> 
-  
-
+    </div>
+    <div class="link field">
+        <h4><i class="material-icons md-48">language</i>Website:</h4>
+        <a href="https://www.seamlessiot.com">{{startup.fields["Company Website"]}}</a>
+    </div>
     
   <div class="alignment field">
-    <h4>Alignment:</h4>
+    <h4><i class="material-icons md-48">business</i>Alignment:</h4>
     <p>{{startup.fields["Alignment"]}}</p>
   </div>
   <div class="themes field">
-    <h4>Themes:</h4>
+    <h4><i class="material-icons md-48">layers</i>Themes:</h4>
     <p>{{startup.fields["Theme(s)"]}}</p>
   </div>
            
@@ -37,33 +39,19 @@
     <div class="column">
       <div class="field"><p>{{startup.fields["Two Line Company Summary"]}}</p></div>
       <div class="uniqueness field">  
-          <h4>Uniqueness:</h4>
-          <p>{{startup.fields["Uniqueness"]}}/5</p> 
+          <h4><i class="material-icons md-48">military_tech</i>Uniqueness:</h4>
+          <p class="stars">{{startup.fields["Uniqueness"]}}</p>
       </div>
       <div class="team field">
-          <h4>Team:</h4>
+          <h4><i class="material-icons md-48">group</i>Team:</h4>
           <p>{{startup.fields["Team"]}}</p>
       </div>
       <div class="raised field"> 
-          <h4>Capital Raised:</h4>
+          <h4><i class="material-icons md-48">monetization_on</i>Capital Raised:</h4>
           <p>${{startup.fields["Raised"]}}</p>
       </div>  
   </div>
   </div>
   <app-project-detail [index]="[i]" [startups]="startups"></app-project-detail>
 </li>
-</div>  
-<!-- Button to toggle project view --> 
-
-<!-- project view of startup, for test purposes -->
-<!-- <div class="project-view">
-  <h4>Project View</h4>
-  <li *ngFor="let project of projects, index as i">
-    <h1>{{project.fields["Project Name"]}}</h1>
-    <p>{{project.fields["Project Summary"]}}</p>
-  </li>
-</div>   -->
-
-
-
-
+</div>

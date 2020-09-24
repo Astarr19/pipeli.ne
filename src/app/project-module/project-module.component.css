@@ -49,9 +49,16 @@ li
 p, h4{
   margin: 0;
   padding: 0;
+
+  display: flex;
+  align-items: center;
 }
 
-/* test for two-column view */
+.stars
+{
+    font-size: 1.5em;
+}
+
 .row {
   display: flex;
   flex-direction: row;
@@ -71,5 +78,33 @@ button
 {
     display: flex;
     align-items: center;
-    padding-left: 20px;
+}
+
+.link a
+{
+    text-decoration: underline; 
+}
+
+@media only screen and (max-width: 600px) {
+    .row {
+        flex-flow: column nowrap;
+    }
+
+    .column {
+        width: 99%;
+    }
+}
+
+@media only screen and (min-width: 1447px) {
+    .container {
+        justify-content: space-around;
+        flex-flow: row wrap;
+        background-color: lightgrey;
+    
+    }
+    
+    .startup {
+      width: 500px;
+      background-color: white;
+    }
 }
