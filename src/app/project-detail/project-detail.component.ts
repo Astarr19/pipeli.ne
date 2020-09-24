@@ -35,24 +35,20 @@ export class ProjectDetailComponent implements OnInit {
   constructor(private api:ApiResponseService) { }
 
   ngOnInit(): void {
-    console.log(this.index, this.startups)
     this.company = encodeURI(`{Startup Engaged} = '${this.startups[this.index].fields["Company Name"]}'`)
   }
 
   getProjects(company: string): void {
     this.company = this.startups[this.index].fields["Company Name"];
     this.api.getProjects(company).subscribe((response: ProjectData) => {
-      this.projects = response.records
-      console.log(this.projects);
+      this.projects = response.records;
       if (this.projects.length === 0) {
         this.noProjects = true;
-        console.log("noProjects is true");
       } 
     })
   }
 
   toggleDisplay() {
-    console.log("toggle");
     this.noProjects = !this.noProjects;    
   }
   

@@ -81,12 +81,6 @@ export class ProjectModuleComponent implements OnInit {
       }
     })
   }
-  getStartups(): void {
-    this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
-      console.log(response)
-      this.startups = response.records
-    })
-  }
 
   lastPage() {
     if (this.index - 1 === 0) {
@@ -133,7 +127,6 @@ export class ProjectModuleComponent implements OnInit {
     this.offsetArr = [''];
     this.index = 0;
     this.api.getStartups(this.offsetArr[this.index], str).subscribe((response: ProjectData) => {
-      console.log(str);
       this.offsetArr.push(response.offset);
       this.startups = response.records;
       this.fixDisplay(this.startups, "Alignment");
