@@ -2,7 +2,6 @@
     display: flex;
     align-content: center;
     flex-direction: column;
-    padding-left: 10%;
     padding-right: 10%;
 
 }
@@ -38,6 +37,7 @@ button
     align-items: center;
     padding-left: 20px;
     width: 165px;
+    margin-left: 0;
 }
 
 .container {
