@@ -4,6 +4,7 @@
 <div class="pages">
 <button *ngIf="lastButton" (click)="lastPage()"><i class="material-icons md-48">keyboard_arrow_left</i>Last Page</button>
 <button *ngIf="nextButton" (click)="nextPage()">Next Page<i class="material-icons md-48">keyboard_arrow_right</i></button>
+
 </div>
 
 <div class="container">
@@ -12,7 +13,8 @@
   <div class="row">
     <div class="column">
       <a href="https://www.seamlessiot.com">{{startup.fields["Company Website"]}}</a>
-      <div class="field"><p>{{startup.fields["City"]}}, {{startup.fields["Country"]}}</p></div>git
+      <div class="field"><p>{{startup.fields["City"]}}, {{startup.fields["Country"]}}
+      </p><p></p></div>
     <div class="review-date field">   
       <h4><i class="material-icons md-48">today</i>Review Date:</h4>
       <p>{{startup.fields["Review Date"]}}</p>
