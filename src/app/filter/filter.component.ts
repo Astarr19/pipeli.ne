@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ApiResponseService } from '../api-response.service';
 
 @Component({
   selector: 'app-filter',
@@ -8,7 +7,7 @@ import { ApiResponseService } from '../api-response.service';
 })
 export class FilterComponent implements OnInit {
 
-  constructor(private api: ApiResponseService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -16,11 +15,11 @@ export class FilterComponent implements OnInit {
   @Output() filtered = new EventEmitter<object>()
   submit(f){
     let obj: object = {
+      name: f.value.name,
       city: f.value.city,
       country: f.value.country,
-      themes: f.value.themes,
+      alignment: f.value.alignment
     };
-    console.log(obj);
     this.filtered.emit(obj);
   }
 }
