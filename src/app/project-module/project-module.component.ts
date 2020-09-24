@@ -75,11 +75,7 @@ export class ProjectModuleComponent implements OnInit {
       console.log(response)
       this.startups = response.records
     })
-<<<<<<< HEAD
   }
-=======
-  }  
->>>>>>> ee0cec4a5749df2466620186fb22d8343b012667
 
   lastPage() {
     if (this.index - 1 === 0) {
@@ -133,9 +129,4 @@ export class ProjectModuleComponent implements OnInit {
       this.fixDisplay(this.startups, "Theme(s)");
     })
   }
-<<<<<<< HEAD
 };
-=======
-
-}
->>>>>>> ee0cec4a5749df2466620186fb22d8343b012667
