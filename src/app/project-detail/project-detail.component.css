@@ -2,8 +2,8 @@ button
 {
     display: flex;
     align-items: center;
-    padding-left: 20px;
 }
+
 .container {
     display: flex;
     align-content: center;

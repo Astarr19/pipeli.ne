@@ -1,24 +1,22 @@
-<div class="container">
+<div class="container">    
     <!-- When this button fires it displays the projects attached to the startup -->
-    <button (click)="getProjects(company)">More details</button>
+    <button (click)="getProjects(company)" class = "button">More details</button>    
+    <!-- Will loop through project list array  -->
     <li *ngFor="let project of projects, index as i" >
-      <!-- *ngIf="!noProjects; else #inactiveProject" -->
       <h2>{{ project.fields["Project Name"] }}</h2>
       <div class ="row">
         <div class="column">
-          <div class="summary">
-            <p>{{ project.fields["Project Summary"] }}</p>
-          </div>
+          
           <div class = "engagement-phase:">
-            <p>Engagement Phase:</p>&nbsp;
+            <p>Engagement Phase:</p>
             <p>{{ project.fields["Engagement Phase"] }}</p>
           </div>
           <div class = "engagement-progress">
-            <p>Engagement Progress:</p>&nbsp;
+            <p>Engagement Progress:</p>
             <p>{{ project.fields["Engagement Progress"] }}</p>
           </div>
           <div *ngIf="found.ongoingStatus; else noOngoingStatus" class = "ongoing-status">
-            <p>Ongoing Status:</p>&nbsp;
+            <p>Ongoing Status:</p>
             <p>{{ project.fields["Ongoing Status"] }}</p>
           </div>
           <ng-template #noOngoingStatus>
@@ -59,12 +57,12 @@
               <p>${{ project.fields["Post-Engagement Seamless Investment"] }}</p>
             </div>
         </div>
-      </div>
-      <ng-template #inactiveProject>
-        <h3>This startup has no currently active projects.</h3>
-      </ng-template>
-  
-     
+      </div>   
     </li>
+    <div *ngIf="noProjects === true">
+      <p>No projects currently active.</p>
+    </div>
+    <!-- </div> -->
     
+   
     </div>  
