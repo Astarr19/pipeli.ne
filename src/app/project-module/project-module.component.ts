@@ -1,16 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiResponseService } from '../api-response.service';
 import { ProjectData, Project, Startup, StartupData } from '../project-data';
-
 @Component({
   selector: 'app-project-module',
   templateUrl: './project-module.component.html',
   styleUrls: ['./project-module.component.css']
 })
 export class ProjectModuleComponent implements OnInit {
-
   constructor(private api:ApiResponseService) { }
-  
   startups: Startup[];
   selected: string;
   formStatus: boolean = true;
@@ -19,16 +16,14 @@ export class ProjectModuleComponent implements OnInit {
   index: number = 0;
   offsetArr: string[] = [''];
   filters: string;
-
   ngOnInit(): void {
     //Populates the page with all startups
-    this.api.getStartups(this.offsetArr[0]).subscribe((response: ProjectData) => {
+    this.api.getStartups(this.offsetArr[this.index]).subscribe((response: ProjectData) => {
       this.offsetArr.push(response.offset);
       this.startups = response.records;
       this.fixAlignment(this.startups);
     })
   }
-
   nextPage() {
     this.index++;
     this.api.getStartups(this.offsetArr[this.index], this.filters).subscribe((response:ProjectData) => {
@@ -45,12 +40,8 @@ export class ProjectModuleComponent implements OnInit {
       this.lastButton = true;
       this.startups = response.records;
       this.fixAlignment(this.startups);
-    // this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
-    //   console.log(response)
-    //   this.startups = response.records
     })
   }
-
   fixAlignment(startups: Project[]) {
     startups.forEach((startup: Project)=>{
       if (startup.fields["Alignment"]) {
@@ -60,27 +51,12 @@ export class ProjectModuleComponent implements OnInit {
       }
     })
   }
-
   getstartups(): void {
     this.api.getStartups(this.offsetArr[this.index]).subscribe((response: ProjectData) => {
       console.log(response)
       this.startups = response.records
     })
-  }
-
-  //filter method for filtering project list by startup name
-  //https://stackoverflow.com/questions/50591939/angular-how-to-filter-ngfor-to-specific-object-property-data
-  //  filterstartups(): void {
-  //    this.filteredValues = values.filter(project => project.category === 'Startup Engaged');
-  // getStartups(): void {
-  //   this.api.getStartups(this.offsetArr[this.index]).subscribe((response: ProjectData) => {
-  //     console.log(response)
-  //     this.startups = response.records
-  //   })
-  // }
-
-  
-
+  }  
   getId(index: number) {
     //Grabs the id of startup
     this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
@@ -89,7 +65,6 @@ export class ProjectModuleComponent implements OnInit {
       return this.selected;
     })
   }
-
   lastPage() {
     if (this.index - 1 === 0) {
       this.lastButton = false;
@@ -101,32 +76,36 @@ export class ProjectModuleComponent implements OnInit {
       this.fixAlignment(this.startups);
     })
   }
-
   filter(obj: object) {
     let str = '';
+    if (obj["name"]) {
+      str += `FIND('${obj["name"]}', {Company Name})`;
+    }
     if (obj["city"]) {
-      str += encodeURI(`{city}='${obj["city"]}'`);
+      if (str !== '') {
+        str += '&';
+      }
+      str += `FIND('${obj["city"]}', {City})`;
     }
     if (obj["country"]) {
       if (str !== '') {
         str += '&';
       }
-      str += encodeURI(`{country}='${obj["country"]}'`);
-    }
-    if (obj["themes"]) {
+      str += `FIND('${obj["country"]}', {Country})`;
+    } if (obj["alignment"]) {
       if (str !== '') {
         str += '&';
       }
-      str += encodeURI(`{theme(s)}='${obj["themes"]}'`);
+      str += `FIND('${obj["alignment"]}', {Alignment})`
     }
-    this.filters = str;
+    this.filters = encodeURI(str);
     this.offsetArr = [''];
     this.index = 0;
     this.api.getStartups(this.offsetArr[this.index], str).subscribe((response: ProjectData) => {
+      console.log(str);
       this.offsetArr.push(response.offset);
       this.startups = response.records;
       this.fixAlignment(this.startups);
     })
   }
 };
-

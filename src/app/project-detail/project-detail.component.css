@@ -4,3 +4,37 @@ button
     align-items: center;
     padding-left: 20px;
 }
+.container {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    padding-left: 10%;
+    padding-right: 10%;
+
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+  }
+
+  li
+{ list-style-type: none;
+  margin: 0;
+  padding: 0;
+} 
+
+p {
+  margin: 5px 0 5px 0;
+  padding: 0;
+}
+
