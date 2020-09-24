@@ -52,6 +52,7 @@ export class ProjectDetailComponent implements OnInit {
   }
 
   toggleDisplay() {
+    console.log("toggle");
     this.noProjects = !this.noProjects;    
   }
   
