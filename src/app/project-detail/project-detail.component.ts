@@ -48,6 +48,10 @@ export class ProjectDetailComponent implements OnInit {
       }
     })
   }
+
+  toggleDisplay() {
+    this.noProjects = !this.noProjects;    
+  }
   
 
 }
