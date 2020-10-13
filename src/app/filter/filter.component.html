@@ -1,6 +1,7 @@
 <div class="container">
-<form #f="ngForm" (submit)="submit(f)">
-    <div><label for="name">NAME</label>
+    
+    <form #f="ngForm" (submit)="submit(f)">
+    <div><label for="name"><i class="material-icons md-48">store</i>NAME</label>
     <input type="text" id="name" name="name" ngModel></div>
 
     <div><label for="city"><i class="material-icons md-48">location_city</i>&nbsp;CITY</label>
@@ -27,7 +28,7 @@
         <option value="USA"></option>
     </datalist></div>
 
-    <div><label for="alignment">ALIGNMENT</label>
+    <div><label for="alignment"><i class="material-icons md-48">layers</i>ALIGNMENT</label>
     <input list="alignment" name="alignment" ngModel>
     <datalist id="alignment">
         <option value="Amway"></option>
@@ -44,5 +45,5 @@
 
     <div class="buttons"><button type="submit"><i class="material-icons md-48">check</i>Submit</button>
     <button type="reset" class="reset"><i class="material-icons md-48">undo</i>Reset</button></div>
-</form>
+    </form>
 </div>

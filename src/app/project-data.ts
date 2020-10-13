@@ -20,7 +20,7 @@ export interface StartupData {
 }
 
 export interface FoundObj {
-    maturityScoreFound: boolean,
+    maturityScore: boolean,
     projectLead: boolean,
     ongoingStatus: boolean,
     statusSchedule: boolean,

@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiResponseService } from '../api-response.service';
 import { ProjectData, Project, FoundObj, Startup } from '../project-data';
@@ -34,19 +35,21 @@ export class ProjectDetailComponent implements OnInit {
   constructor(private api:ApiResponseService) { }
 
   ngOnInit(): void {
-    console.log(this.index, this.startups)
     this.company = encodeURI(`{Startup Engaged} = '${this.startups[this.index].fields["Company Name"]}'`)
   }
 
   getProjects(company: string): void {
     this.company = this.startups[this.index].fields["Company Name"];
     this.api.getProjects(company).subscribe((response: ProjectData) => {
-      this.projects = response.records
-      console.log(this.projects);
-      if (this.projects === undefined) {
+      this.projects = response.records;
+      if (this.projects.length === 0) {
         this.noProjects = true;
-      }
+      } 
     })
+  }
+
+  toggleDisplay() {
+    this.noProjects = !this.noProjects;    
   }
   
 

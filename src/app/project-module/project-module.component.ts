@@ -15,6 +15,7 @@ export class ProjectModuleComponent implements OnInit {
   index: number = 0;
   offsetArr: string[] = [''];
   filters: string;
+
   ngOnInit(): void {
     //Populates the page with all startups
 
@@ -25,6 +26,7 @@ export class ProjectModuleComponent implements OnInit {
       this.fixDisplay(this.startups, "Theme(s)");
     })
   }
+
   nextPage() {
     this.index++;
     this.api.getStartups(this.offsetArr[this.index], this.filters).subscribe((response:StartupData) => {
@@ -65,12 +67,18 @@ export class ProjectModuleComponent implements OnInit {
       } else if(startup.fields["Uniqueness"] == '1') {
         startup.fields["Uniqueness"] = '★☆☆☆☆';
       }
-    })
-  }
-  getstartups(): void {
-    this.api.getStartups(this.offsetArr[this.index]).subscribe((response: StartupData) => {
-      console.log(response)
-      this.startups = response.records
+
+      if (startup.fields["Team"] == '5') {
+        startup.fields["Team"] = '★★★★★';
+      } else if(startup.fields["Team"] == '4') {
+        startup.fields["Team"] = '★★★★☆';
+      } else if(startup.fields["Team"] == '3') {
+        startup.fields["Team"] = '★★★☆☆';
+      } else if(startup.fields["Team"] == '2') {
+        startup.fields["Team"] = '★★☆☆☆';
+      } else if(startup.fields["Team"] == '1') {
+        startup.fields["Team"] = '★☆☆☆☆';
+      }
     })
   }
   lastPage() {
@@ -113,13 +121,11 @@ export class ProjectModuleComponent implements OnInit {
       and++;
     } if (and > 1) {
       str = `AND(${str})`
-      str += `FIND('${obj["alignment"]}', {Alignment})`
     }
     this.filters = encodeURI(str);
     this.offsetArr = [''];
     this.index = 0;
     this.api.getStartups(this.offsetArr[this.index], str).subscribe((response: ProjectData) => {
-      console.log(str);
       this.offsetArr.push(response.offset);
       this.startups = response.records;
       this.fixDisplay(this.startups, "Alignment");
