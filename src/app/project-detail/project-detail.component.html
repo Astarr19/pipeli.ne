@@ -43,11 +43,11 @@
               <p>First Engagement:</p>&nbsp;
               <p>{{ project.fields["First Engagement End Date"] }}</p>
             </div>
-            <div *ngIf="found.maturityScoreFound" class = "maturity-score">
+            <div *ngIf="found.maturityScore" class = "maturity-score">
               <p>Post-Engagement Maturity Score:</p>&nbsp;
               <p>{{ project.fields["Post Engagement Maturity Score"] }}</p>
             </div>
-            <div *ngIf="found.partnersInterested" class = "partners-interested">
+            <div *ngIf="found.interestedPartners" class = "partners-interested">
               <p>Partners Interested:</p>&nbsp;
               <p>{{ project.fields["Parnters Interested in Secondary Engagement"] }}</p>
             </div>

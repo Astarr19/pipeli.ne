@@ -72,6 +72,7 @@ export class ProjectModuleComponent implements OnInit {
       console.log(response)
       this.startups = response.records
     })
+  }
   lastPage() {
     if (this.index - 1 === 0) {
       this.lastButton = false;
@@ -124,4 +125,5 @@ export class ProjectModuleComponent implements OnInit {
       this.fixDisplay(this.startups, "Alignment");
       this.fixDisplay(this.startups, "Theme(s)");
     })
-  };
+  }
+}
